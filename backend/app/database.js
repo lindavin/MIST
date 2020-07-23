@@ -400,6 +400,12 @@ module.exports.getTopRatedLoggedOut = (count, page, callback) => {
 // |   Challenges   |
 // +----------------+
 
+/**
+ * grab challanges for any user
+ * @param category: the max amount of challenges returned
+ * @param callback: returns either the challenges or the error 
+ */
+
 module.exports.getChallenges = (category, callback) => {
     Challenge.find({ category: category }, (err, challenges) => {
         if (err)
@@ -413,6 +419,13 @@ module.exports.getChallenges = (category, callback) => {
 // +------------+-------------------------------------------------
 // |    Misc    |
 // +------------+
+
+/**
+ * grab username of user
+ * @param userId: a userID
+ * @param callback: returns either the username or the error 
+ */
+
 
 module.exports.getUsername = (userId, callback) => {
     User.findById(userId).exec((err, user) => {
