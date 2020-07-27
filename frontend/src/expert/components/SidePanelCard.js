@@ -35,6 +35,9 @@ import {
     MIST_builtin_values,
 } from '../Utilities';
 
+/**
+ * Our Side Panel component.
+ */
 function SidePanelCard(props) {
 
     /**
@@ -97,10 +100,11 @@ function SidePanelCard(props) {
      * @param {Object} obj 
      * @param {Object} param3 
      */
-    const wrap_button_in_overlay = (component, obj, {
-        createKeyFromObj = () => null,
-        createOverlayFromObj = () => <Tooltip></Tooltip> },
-    ) => (
+    const wrap_button_in_overlay = (component, obj,
+        {
+            createKeyFromObj = () => null,
+            createOverlayFromObj = () => <Tooltip></Tooltip>
+        }) => (
             <OverlayTrigger
                 container={props.expertRef}
                 key={createKeyFromObj(obj)}
@@ -108,8 +112,13 @@ function SidePanelCard(props) {
                 overlay={(createOverlayFromObj(obj))}>
                 {component}
             </OverlayTrigger>
-        )
-    // modify button function
+        ) // wrap_button_in_overlay(Object,Object,Function)
+
+    /**
+     * Wraps delete and edit buttons
+     * @param {React component} button 
+     * @param {Object} obj 
+     */
     const wrap_custom_icons = (button, obj) => {
         const _warningMessage = 'You are about to delete the saved function ' + obj.name + '. Are you sure you want to continue?';
         return (
@@ -143,6 +152,13 @@ function SidePanelCard(props) {
             </>)
     }
 
+    /**
+     * This creates the buttons of the side panel.
+     * 
+     * @param {Object of objects} objects 
+     * @param {Array of keys of 'objects'} specifiedKeys 
+     * @param {Object} param2 
+     */
     function createButtons(objects, specifiedKeys = null, { button_name, insert_text, wrap_button = (button) => button }) {
         let keys = specifiedKeys || Object.keys(objects).sort();
         return (
@@ -289,8 +305,15 @@ function SidePanelCard(props) {
             </Card.Body>
         </Card>
     )
-}
+} // SidePanelCard(props)
 
+/**
+ *  codeRef: An object that references the code field of the form
+    getFormState: A function that gets the form object from the state
+    getStateFunctions: A function that gets the functions object from the state
+    getFunctions: A function that returns an array of the names of the functions that the
+        user has saved
+ */
 SidePanelCard.propTypes = {
     codeRef: PropTypes.object.isRequired,
     getFormState: PropTypes.func.isRequired,
