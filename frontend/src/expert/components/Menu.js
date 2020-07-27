@@ -4,7 +4,23 @@
 /*
  * Menu.js
  * 
- * This exports the Menu component of the MIST Expert GUI.
+ * This exports the Menu component of the MIST Expert GUI. On the Menu bar we
+ * allow users to save their expert-workspaces, publish the final image, and 
+ * save macros that can be used later to make writing their code more easily.
+ * 
+ * To Do: 
+ * 1. Allow users to save their workspaces
+ *  Currently, users can (unsafely) save their workspaces, however, nothing is
+ *  overwritten.
+ * 
+ * 2. Allow users to publish their final images
+ * 
+ * 3. Allow users to delete previous workspaces
+ * 
+ * 4. Allow users to load previously saved workspaces
+ * 
+ * For the Future:
+ * 1. Allow users to import macros from other workspaces
  * 
  */
 
@@ -25,8 +41,26 @@ import {
 import { BsCloud, BsFullscreen, BsFullscreenExit } from 'react-icons/bs';
 import { FaRegShareSquare } from 'react-icons/fa';
 
+/**
+ * Menu is a React functional component that is the Menu bar to our
+ * Expert UI. Its children are two button groups:
+ *  1. A File Dropdown, a form-field to name the workspace, and a full-screen button
+ *  2. Save & Publish buttons 
+ * 
+ * We expect it to have the following props, all of which are functions:
+ *  getCurrentWorkspace,
+    loadWorkspace,
+    resetWorkspace,
+    requestFullscreen,
+    exitFullscreen,
+ *
+ * We explain these further in the propTypes definition immediately following
+ * our functional component.
+ * 
+ */
 function Menu(props) {
 
+    // This will be used to access the name of the workspace for saving the workspace
     const workspaceNameRef = createRef('workspaceName');
 
     return (
@@ -57,7 +91,7 @@ function Menu(props) {
                     overlay={<Tooltip>Save your workspace</Tooltip>}
                 >
                     <Button
-                        onClick={()=>props.saveWSToUser(workspaceNameRef.current.value)}
+                        onClick={() => props.saveWSToUser(workspaceNameRef.current.value)}
                     > <BsCloud /> Save</Button>
                 </OverlayTrigger>
                 <OverlayTrigger
@@ -65,21 +99,30 @@ function Menu(props) {
                     overlay={<Tooltip>Publish your final image</Tooltip>}
                 >
                     <Button
-                        onClick={()=>{console.log('STUB to publish the image')}}
+                        onClick={() => { console.log('STUB to publish the image') }}
                     ><FaRegShareSquare /> Publish</Button>
                 </OverlayTrigger>
             </ButtonGroup>
         </Navbar>
     )
-}
+} // Menu(props)
 
+/**
+ * 
+ * getCurrentWorkspace : A function that returns the current Expert UI workspace, i.e. the 
+ *  saved functions and the current form values
+ * loadWorkspace : A function that loads one of the user's saved workspaces from the server
+ * resetWorkspace : A function resets the workspace to default values
+ * requestFullscreen : A function that enables fullscreen 
+ * exitFullscreen : A function that disables fullscreen
+ */
 Menu.propTypes = {
     getCurrentWorkspace: PropTypes.func.isRequired,
     loadWorkspace: PropTypes.func.isRequired,
     resetWorkspace: PropTypes.func.isRequired,
     requestFullscreen: PropTypes.func.isRequired,
     exitFullscreen: PropTypes.func.isRequired,
-}
+} // Menu.propTypes
 
 function FullscreenButton(props) {
     const [fullscreen, setFullscreen] = useState(document.fullscreen);
@@ -102,6 +145,20 @@ function FullscreenButton(props) {
     }
 }
 
+/**
+ * The dropdown where we keep our workspace related actions. Here we allow the user to
+ * 1. Reset the workspace
+ * 2. Delete a workspace
+ * 3. Load a workspace
+ * 
+ * We expect to recieve the following props, which we explain in the propTypes immediately
+ * following FileDropdown(props):
+ *  getCurrentWorkspace,
+    loadWorkspace,
+    resetWorkspace,
+    workspaceNameRef,
+ *
+ */
 function FileDropdown(props) {
     return (
         <>
@@ -132,15 +189,25 @@ function FileDropdown(props) {
             </DropdownButton>{' '}
         </>
     )
-}
+} // FileDropdown(props)
 
+/**
+ * getCurrentWorkspace : A function that returns the current Expert UI workspace, i.e. the 
+ *  saved functions and the current form values
+ * loadWorkspace : A function that loads one of the user's saved workspaces from the server
+ * resetWorkspace : A function resets the workspace to default values
+ * workspaceNameRef: An object that points to the workspace-name form inline the Menu bar
+ */
 FileDropdown.propTypes = {
     getCurrentWorkspace: PropTypes.func.isRequired,
     loadWorkspace: PropTypes.func.isRequired,
     resetWorkspace: PropTypes.func.isRequired,
     workspaceNameRef: PropTypes.object.isRequired,
-}
+} // FileDropdown.propTypes
 
+/**
+ * This button allows the user to reset the workspace
+ */
 function ResetWorkspace(props) {
     const [resetWorkspaceModalShow, setResetWorkspaceModalShow] = useState(false);
 
@@ -188,7 +255,7 @@ function ResetWorkspace(props) {
             {resetModal}
         </>
     );
-}
+} // ResetWorkspace(props)
 
 function DeleteWorkspace() {
     const [show, setShow] = useState(false);
