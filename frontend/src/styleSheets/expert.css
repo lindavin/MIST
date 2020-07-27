@@ -1,9 +1,9 @@
+/* TODO: this overwrites the content wrap settings on every page */
 #content-wrap {
     margin:0;
     padding:0;
 }
 
-<<<<<<< HEAD
 #expert .nav-tabs .nav-link {
     background-color: #111;
     color: #888;
@@ -62,14 +62,12 @@
     background-clip: content-box;
 }
 
-=======
->>>>>>> main
 #expert .scroll {
     height: 100vh;
     overflow-y: scroll;
 }
 
-#expert .btn {
+#expert .menu-btn {
     margin: 6px;
 }
 
@@ -81,9 +79,6 @@
     caret-color: black;
     color: #333;
     font-variant-ligatures: common-ligatures;
-    /* Doesn't seem to work well with react-simple-code-editor
-     * font-family: "Fira code", "Fira Mono", monospace;
-     */
     font-family: "Fira code", "Fira Mono", monospace;
     font-size: 1rem;
 }
@@ -92,8 +87,20 @@
     color: #007bff;
 }
 
+#expert-code .macros {
+    color: #ffa500;
+}
+
 #expert-code .number {
     color: #dc3545;
+}
+
+#expert-code .params {
+    color: #008000;
+}
+
+#expert-code .paren {
+    background-color: #008000;
 }
 
 #expert-code .symbol {
@@ -112,7 +119,7 @@
 }*/
 
 #expert-canvas {
-    padding: 10px;
+    padding: 20px 10px 10px 10px;
 }
 
 #expert-canvas-image {
@@ -124,23 +131,24 @@
     padding: 20px;
 }
 
-#message {
+#expert #message {
     background-color: #353b48;
+    color: #ff0000;
 }
 
-.canvasButton {
+#expert .canvasButton {
     background-color: #012968;
 }
 
-.insertButton {
+#expert .insertButton {
     border: #011d2e;
     background-color: #013655;
 }
 
-.panel {
+#expert .panel {
     background-color: #272727;
 }
 
-.formTextbox {
+#expert .formTextbox {
     background-color: #f8f8ff;
 }

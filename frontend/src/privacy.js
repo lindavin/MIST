@@ -1,7 +1,7 @@
 import React from "react";
-import { Container, Nav } from "react-bootstrap";
+import { Container } from "react-bootstrap";
 
-//Privacy Policy 
+//Page header + contents
 
 function Privacy() {
   return (

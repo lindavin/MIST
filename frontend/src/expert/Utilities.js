@@ -167,7 +167,6 @@ export const MIST_builtin_functions = {
         "type": "GENERAL"
     },
 }
-<<<<<<< HEAD
 
 
 export const MIST_builtin_values = {
@@ -208,5 +207,3 @@ export const MIST_builtin_values = {
         "about": "enter your own number"
     },
 };
-=======
->>>>>>> main

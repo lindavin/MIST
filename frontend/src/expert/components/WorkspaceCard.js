@@ -267,7 +267,6 @@ function FunctionButtons(props) {
     )
 }
 
-<<<<<<< HEAD
 function HelpText(props) {
     return (
         <OverlayTrigger
@@ -281,6 +280,3 @@ function HelpText(props) {
 }
 
 export default WorkspaceCard;
-=======
-export default WorkspaceCard;
->>>>>>> main
