@@ -296,17 +296,9 @@ class Expert extends Component {
                     onClose={this.togglePopup.bind(this)}
                 />
                 <Menu
-                    addUserDefinedFunction={() => this.addUserDefinedFunction()}
-                    clearFunction={this.clearFunction.bind(this)}
                     getCurrentWorkspace={() => this.state}
-                    deleteFunction={this.deleteFunction.bind(this)}
-                    loadSavedFunction={this.loadSavedFunction.bind(this)}
                     loadWorkspace={this.loadWorkspace.bind(this)}
                     resetWorkspace={() => this.resetWorkspace()}
-
-                    getFormState={() => this.getFormState()}
-                    getStateFunctions={() => this.getStateFunctions()}
-                    setMessage={(message) => this.setFormValue("message", message)}
 
                     requestFullscreen={() => {
                         console.log(this.expertRef);
