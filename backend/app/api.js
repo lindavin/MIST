@@ -242,6 +242,11 @@ module.exports = (app, passport, database) => {
         res.json(userInfo);
     })
 
+    app.post('/api/expert', (req, res) => {
+        const workspace = req.body;
+        database.saveExpertWorkspace(workspace, res);      
+    })
+
     // Handles any requests that don't match the ones above
     app.get('*', (req, res) => {
         //res.sendFile(path.join(__dirname + '../../frontend/public/index.html'));

@@ -133,12 +133,12 @@ class Expert extends Component {
         })
     } // loadFunction(Object)
 
-        /**
-     * Loads the saved function into the Expert UI's Form.
-     * 
-     * @param {String} function_name, whose keys matches the initialForm object found in
-     * './initial-state.js'
-     */
+    /**
+ * Loads the saved function into the Expert UI's Form.
+ * 
+ * @param {String} function_name, whose keys matches the initialForm object found in
+ * './initial-state.js'
+ */
     loadSavedFunction(function_name) {
         const fun = { ...this.state.functions[function_name] };
         if (Array.isArray(fun.params)) {
@@ -273,10 +273,10 @@ class Expert extends Component {
         }))
     }
 
-    componentDidMount(){
-        const {code} = this.props.match.params;
-        if(code){
-            this.setState(state=>({
+    componentDidMount() {
+        const { code } = this.props.match.params;
+        if (code) {
+            this.setState(state => ({
                 form: {
                     ...state.form,
                     code: code,
@@ -284,7 +284,22 @@ class Expert extends Component {
             }))
         }
     }
-  
+
+    saveWSToUser(name) {
+        const workspace = {functions: this.state.functions, form: this.state.form, name: name};
+        // check if user has been authenticated
+        fetch('/api/expert', {
+            method: 'POST', // or 'PUT'
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(workspace),
+        })
+            .then(response => response.json())
+            .then(data => console.log(data))
+            .catch(error => console.log('Error: ' + error))
+    }
+
     render() {
         return (
             <div id='expert' ref={this.expertRef} >
@@ -305,6 +320,8 @@ class Expert extends Component {
                         this.expertRef.current.requestFullscreen()
                     }}
                     exitFullscreen={() => document.exitFullscreen()}
+
+                    saveWSToUser={this.saveWSToUser.bind(this)}
                 />
                 <ResizablePanels
                     bkcolor="#353b48"

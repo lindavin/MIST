@@ -56,13 +56,17 @@ function Menu(props) {
                     placement='top'
                     overlay={<Tooltip>Save your workspace</Tooltip>}
                 >
-                    <Button> <BsCloud /> Save</Button>
+                    <Button
+                        onClick={()=>props.saveWSToUser(workspaceNameRef.current.value)}
+                    > <BsCloud /> Save</Button>
                 </OverlayTrigger>
                 <OverlayTrigger
                     placement='top'
                     overlay={<Tooltip>Publish your final image</Tooltip>}
                 >
-                    <Button><FaRegShareSquare /> Publish</Button>
+                    <Button
+                        onClick={()=>{console.log('STUB to publish the image')}}
+                    ><FaRegShareSquare /> Publish</Button>
                 </OverlayTrigger>
             </ButtonGroup>
         </Navbar>

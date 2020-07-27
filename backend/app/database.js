@@ -198,6 +198,8 @@ const usersSchema = new mongoose.Schema({
     liked: [{ type: mongoose.Schema.Types.ObjectId }],   // of image _ids
     comments: [{ type: mongoose.Schema.Types.ObjectId, ref: "Comment" }],                 //(of comment _ids)
     about: String,
+
+    expertWorkspaces: Array,
 });
 
 const challengeSchema = new mongoose.Schema({
@@ -469,6 +471,36 @@ module.exports.saveComment = function (req, res) {
         })
 }
 
+
+// +--------------+-------------------------------------------------
+// |    Expert    |
+// +--------------+
+module.exports.saveExpertWorkspace = (workspace, res) => {
+    console.log(workspace);
+    // get the authenticated users userId
+    // look into passport stored under req.user
+    // and pull out the userid then set const userId to that
+
+    //STUB userId for testing
+    const userId = '5efd140f5f0ef435a02538e2';
+    //
+    User
+        .findById(userId)
+        .updateOne({
+            $push:
+                { expertWorkspaces: workspace, }
+        })
+        .exec()
+        .then(writeOpResult => {
+            console.log(writeOpResult.nModified)
+        })
+        .catch(error => {
+            res.status(400).send({
+                success: false,
+                message: 'Error failed to save expert-workspace because of Error: ' + error,
+            })
+        })
+}
 
 // +------------+-------------------------------------------------
 // |    Misc    |
