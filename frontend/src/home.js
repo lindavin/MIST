@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import "./styleSheets/home.css";
 import LinkButton from "./LinkButton";
 import { NavLink } from "react-router-dom";
-import MistLogo from "./Logos/Positive/nobackground300.png";
+import MistLogo from "./design/Logos/Postivie/nobackground300.png";
 import { Container } from "react-bootstrap";
 import { BsClock } from "react-icons/bs";
 import MISTImage from "./MISTImageGallery"
@@ -109,7 +109,7 @@ class FeaturedImages extends Component {
 
   // Retrieves the list of items from the Express app
   getFeaturedImages = () => {
-    fetch('/api')
+    fetch('/api/home')
       .then(res => res.json())
       .then(featuredImages => this.setState({ featuredImages }));
   } 
