@@ -211,6 +211,11 @@ function SidePanelCard(props) {
         }
     } // insertText(txt)
 
+    /**
+     * Determines the effect we want when the drag ends.
+     * Here we want the functions array to reorder.
+     * @param {Object} result 
+     */
     const onDragEnd = result => {
         const { destination, source, draggableId } = result;
         if (destination && source.droppableId === 'user_defined_functions') {

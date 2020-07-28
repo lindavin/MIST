@@ -30,6 +30,9 @@ import { GrPowerReset } from 'react-icons/gr'
 import Editor from 'react-simple-code-editor';
 import { highlight, match_macros, match_params } from './prism-mist.js';
 
+/*
+ * The central panel
+ */
 function WorkspaceCard(props) {
     // Class toggles are used to force a highlight update when moving through the code
     // TODO: see if there's a better way to do this
@@ -84,7 +87,7 @@ function WorkspaceCard(props) {
                                 <Form.Group>
                                     <Form.Label>
                                         Parameters&nbsp;
-                                        <HelpText text="The parameters to your MIST function. Separate parameters with commas. Parameter names can include numbers and capital or lowercase letters." id="mist-function-params-tooltip"/>
+                                        <HelpText text="The parameters to your MIST function. Separate parameters with commas. Parameter names can include numbers and capital or lowercase letters." id="mist-function-params-tooltip" />
                                     </Form.Label>
                                     <Form.Control
                                         as="textarea"

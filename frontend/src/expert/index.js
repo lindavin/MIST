@@ -286,7 +286,7 @@ class Expert extends Component {
     }
 
     saveWSToUser(name) {
-        const workspace = {functions: this.state.functions, form: this.state.form, name: name};
+        const workspace = { functions: this.state.functions, form: this.state.form, name: name };
         // check if user has been authenticated
         fetch('/api/expert', {
             method: 'POST', // or 'PUT'
