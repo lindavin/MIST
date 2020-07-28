@@ -242,9 +242,14 @@ module.exports = (app, passport, database) => {
         res.json(userInfo);
     })
 
+    app.get('/api/expert/hasWorkspace/', (req, res) => {
+        const { name, userid } = req.headers;
+        database.userHasWorkspace(userid, name, res);
+    });
+
     app.post('/api/expert', (req, res) => {
-        const workspace = req.body;
-        database.saveExpertWorkspace(workspace, res);      
+        const { userId, workspace } = req.body;
+        database.saveExpertWorkspace(userId, workspace, res);
     })
 
     // Handles any requests that don't match the ones above

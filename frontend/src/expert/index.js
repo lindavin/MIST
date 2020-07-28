@@ -286,17 +286,63 @@ class Expert extends Component {
     }
 
     saveWSToUser(name) {
+
+        function save(userId, workspace) {
+            fetch('/api/expert', {
+                method: 'POST', // or 'PUT'
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    userId: userId,
+                    workspace: workspace,
+                }),
+            })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        alert('Expert-Workspace ' + name + ' has been successfully saved!');
+                    } else {
+                        alert('We failed to save because of Error: ' + data.message);
+                    }
+                })
+                .catch(error => console.log('Error: ' + error))
+        }
+
         const workspace = { functions: this.state.functions, form: this.state.form, name: name };
-        // check if user has been authenticated
-        fetch('/api/expert', {
-            method: 'POST', // or 'PUT'
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(workspace),
-        })
+        // check if user has been authenticated and retrieve the userId
+        //STUB userId for testing
+        const userId = '5efd140f5f0ef435a02538e2';
+        // check if user has a workspace by the same name
+
+        const myHeaders = new Headers({
+            name: name,
+            userId: userId,
+        });
+
+        const myRequest = new Request('api/expert/hasWorkspace', {
+            method: 'GET',
+            headers: myHeaders,
+            cache: 'default',
+        });
+
+        // check if userid has already has a workspace with the same name
+        fetch(myRequest)
             .then(response => response.json())
-            .then(data => console.log(data))
+            .then(data => {
+                if (data.success) {
+                    if (!data.hasWorkspace) {
+                        save(userId, workspace);
+                    } else {
+                        this.triggerPopup({
+                            message: 'There already exists a workspace by the name ' + name + '. Are you sure you want to overwrite the workspace?',
+                            onConfirm: () => save(userId, workspace),
+                        })
+                    }
+                } else {
+                    alert('We failed to check the database due to Error: ' + data.message)
+                }
+            })
             .catch(error => console.log('Error: ' + error))
     }
 

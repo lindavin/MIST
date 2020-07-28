@@ -475,30 +475,83 @@ module.exports.saveComment = function (req, res) {
 // +--------------+-------------------------------------------------
 // |    Expert    |
 // +--------------+
-module.exports.saveExpertWorkspace = (workspace, res) => {
-    console.log(workspace);
-    // get the authenticated users userId
-    // look into passport stored under req.user
-    // and pull out the userid then set const userId to that
-
-    //STUB userId for testing
-    const userId = '5efd140f5f0ef435a02538e2';
-    //
+module.exports.userHasWorkspace = (userId, expertWorkspaceName, res) => {
     User
         .findById(userId)
-        .updateOne({
-            $push:
-                { expertWorkspaces: workspace, }
-        })
+        .select('expertWorkspaces')
         .exec()
-        .then(writeOpResult => {
-            console.log(writeOpResult.nModified)
+        .then(user => {
+            console.log(user)
+            if (!user)
+                res.send({
+                    success: false,
+                    message: 'User could not be located in the database'
+                })
+            else
+                if (!user.expertWorkspaces) {
+                    res.send({
+                        success: true,
+                        hasWorkspace: false,
+                    })
+                } else {
+                    user.expertWorkspaces.forEach(expertWorkspace => {
+                        if (expertWorkspace.name === expertWorkspaceName) {
+                            res.send({
+                                success: true,
+                                hasWorkspace: true,
+                            });
+                            return;
+                        }
+                    })
+                    // if no workpace is matched
+                    res.send({
+                        success: true,
+                        hasWorkspace: false,
+                    })
+                }
         })
-        .catch(error => {
-            res.status(400).send({
-                success: false,
-                message: 'Error failed to save expert-workspace because of Error: ' + error,
-            })
+        .catch(error => res.status(400).send({
+            success: false,
+            message: 'Failed to check due to ' + error
+        }))
+}
+
+//https://stackoverflow.com/questions/32549326/mongoose-push-or-replace-element-into-array
+module.exports.saveExpertWorkspace = (userId, workspace, res) => {
+    var bulk = User.collection.initializeOrderedBulkOp();
+
+    bulk.find({ "_id": mongoose.Types.ObjectId(userId), "expertWorkspaces.name": workspace.name }).updateOne({
+        "$set": { "expertWorkspaces.$": workspace }
+    })
+
+    bulk.find({ "_id": mongoose.Types.ObjectId(userId), "expertWorkspaces.name": { "$ne": workspace.name } }).updateOne({
+        "$push": { "expertWorkspaces": workspace }
+    });
+    bulk
+        .execute((error, result) => {
+            console.log(result)
+            if (error) {
+                res.status(400).send({
+                    success: false,
+                    message: 'Error failed to save expert-workspace because of Error: ' + error,
+                })
+            } else {
+                if (result.nMatched === 0) {
+                    // chose nMatched because somehow Mongo was choosing
+                    // to not modify a document and array if the object inserted
+                    // is not different from what was already in the array.
+                    // so we assume that when we have a match the update
+                    // worked successfully
+                    res.send({
+                        success: false,
+                        message: 'Error: Unknown',
+                    })
+                } else {
+                    res.send({
+                        success: true,
+                    })
+                }
+            }
         })
 }
 
