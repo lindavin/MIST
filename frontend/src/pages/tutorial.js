@@ -648,13 +648,17 @@ const sections = [
               To access them, hover over the <b>Values</b> tab  on the upper menu bar.
               <br />
               Here, you can see not only <b>x</b> and <b>y</b>, but all of the other variables 
-              and constants. To bring them into the 
-              workspace, click and drag them down.
+              and constants. To bring them into the workspace, click and drag them down.
               <br /> 
-              To add a function, hover over 
-              the <b>Functions</b> tab. Here, you can
+              To add a function, hover over the <b>Functions</b> tab. Here, you can
               include blocks that let you add, multiply, and do many other cool things to your 
               variables! To use these blocks, you can also click and drag them into the workspace.
+              <br />
+              To connect variables and blocked together, double click on one of them. A line will
+              appear and you can scroll over to the other block and a node will appear. Click
+              on the node and it will connect the blocks together! To delete a line or a block,
+              hover over it and a little trash can icon will appear. Click on this and it will
+              be deleted!
               <br />
               To change the theme, click <b>Change Theme</b> in the top left corner. There 
               are three different options and you can click to see what they look like! 
@@ -1622,7 +1626,10 @@ const sections = [
             1. Start by making a triangle. Click{" "}
             <Link to="#triangle">here </Link> for the triangle tutorial!
             <br />
-            2. Add a constant and set it equal to <b>-0.5</b>.
+            2. Add a constant and set it equal to <b>-0.5</b>. In this case, cause we
+             are trying to make an image smaller, we are using a negative number. 
+             If we wanted to make a larger, we would use a positive one. This is
+             because it adds to or lessens the size of the object it is being used with.
             <br />
             3. Connect this to the <b>sum</b> block. Take a look at how the triangle got
             smaller!
@@ -1683,13 +1690,16 @@ const sections = [
             value from the <b>x</b> value. In this case we are adding <b>0.5</b>.
             <br />
             2. When finishing this up, you get a circle that is slightly to the
-            left. Now try moving it to the right!
+            left. This is because when we add 0.5, the center moves 0.5 along the
+            x-axis, which makes the overall images shift left. Now try moving it to the right! 
             <br />
             3. Similarly to the horizontal example, to move the circle
             vertically, we have to add or subtract some value from 
             the <b>y</b> value. In this case we are adding <b>0.5</b> to <b>y</b>.
             <br />
-            4. When finishing this up, you get a circle that is slightly up. Now
+            4. When finishing this up, you get a circle that is slightly up. The reason for this
+            is really similar to the previous steps. When we add 0.5, the center moves 0.5 along the
+            y-axis now, which makes the overall images shift up. Now
             try moving it down!
           </Container>
         ),
