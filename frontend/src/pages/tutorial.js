@@ -641,8 +641,33 @@ const sections = [
               <br />
               Each image has a range of -1 to 1, where -1 represents white and 1
               represents black; everything in between is gray until the rbg
-              function is used. X- values range from -1 on the left and 1 on the
+              function is used. x-values range from -1 on the left and 1 on the
               right, while y-values range from -1 at the top to 1 at the bottom.
+              <br />
+              As mentioned before, <b>x</b> and <b>y</b> variables are used a lot. 
+              To access them, hover over the <b>Values</b> tab  on the upper menu bar.
+              <br />
+              Here, you can see not only <b>x</b> and <b>y</b>, but all of the other variables 
+              and constants. To bring them into the 
+              workspace, click and drag them down.
+              <br /> 
+              To add a function, hover over 
+              the <b>Functions</b> tab. Here, you can
+              include blocks that let you add, multiply, and do many other cool things to your 
+              variables! To use these blocks, you can also click and drag them into the workspace.
+              <br />
+              To change the theme, click <b>Change Theme</b> in the top left corner. There 
+              are three different options and you can click to see what they look like! 
+              <br />
+              Once you start putting blocks into the workspace, click on them to see the 
+              function appear in the function abr at the bottom of the workspace. To 
+              save the image, make sure your most recently connected block is selected. 
+              From there, click <b>Image</b> in the bottom right corner. Now you can cancel, 
+              download, save it, or enter the expert page. 
+              <br />
+              There are many images and animations you can create in the workspace! 
+              Keep scrolling for more tutorials or go try for yourself by 
+              clicking <b>Create</b> in the menu!
             </Container>
           ),
 
@@ -1324,8 +1349,7 @@ const sections = [
         //Text
         text: (
           <Container>
-            Have you ever wanted to try making shapes? Here is an example of a
-            circle!
+            Have you ever wanted to try making a circle? Try this!
             <br /><br />
             1. Place an <b>x</b> and a <b>y</b> in the workspace.
             <br /><br />
@@ -1336,7 +1360,7 @@ const sections = [
             <br /><br />
             <img src={Circle1} alt="Circle Step 2" style={{height:"75%", width:"75%" }} />
             <br /><br />
-            3. Add <b>wsum</b>. And make sure it has a W!
+            3. Add <b>wsum</b>. And make sure it has a W in the front!
             <br /><br />
             <img src={Circle2} alt="Circle Step 3" style={{height:"75%", width:"75%" }} />
             <br /><br />
@@ -1458,7 +1482,7 @@ const sections = [
         keywords: ["shape", "grayscale", "image"],
         image: (
           <MISTImage
-            code="sign(sum(mult(2, x, mistif(x, -1, 1)), mult(2, y, mistif(y, -1, 1)), 2))"
+            code="sign(wsum(abs(y),abs(x)))"
             resolution="250"
           />
         ),
@@ -1468,57 +1492,19 @@ const sections = [
           <Container>
             For a rhombus, we’re going to add <b>x</b> and <b>y</b> blocks.
             <br />
-            1. First, add the variable <b>x</b> and values <b>1</b> and{" "}
-            <b>-1</b> to the workspace.
+            1. Place an <b>x</b> and a <b>y</b> in the workspace.
             <br />
-            2.Then, bring in an <b>if</b> statement.
+            2. Then bring two <b>abs</b> into the workspace. 
+            Connect <b>x</b> to one of them, and the connect <b>y</b> to the other 
+            one.
             <br />
-            3. When connecting to the <b>if</b> statement, make sure it goes in
-            the correct order! This is very important. Connect the <b>x</b> to
-            the first node of the if statement.
+            3. Add <b>wsum</b>. And make sure it has a W in the front!
             <br />
-            4. Then, connect <b>-1</b> to the second node. This means that if x
-            is a positive number or 0, it will return this -1.
+            4. Connect it to a <b>sign</b> function! 
             <br />
-            5. After that, connect <b>1</b> to the third node. If the input is
-            less than 0, it will return 1. This is why when you click the
-            preview for if, the right side is white and the left side is black.
-            You can see what it should look below!
-            <br />
-            6. Next, add <b>x</b> and a <b>value</b> block to the workspace. Set
-            the value of this block equal to <b>2</b>.
-            <br />
-            7. Bring in a <b>mult</b> block and connect the <b>x</b>, the{" "}
-            <b>2</b>, and the <b>if</b> block to it. If you look at the preview
-            now, you can see how it has changed!
-            <br />
-            8. Now repeat steps 1-7, but this time using <b>y</b> instead of{" "}
-            <b>x</b>. This will change the pattern from a vertical split to a
-            horizontal one. We'll write the steps below just in case (or jump to
-            step 12).
-            <br />
-            9. Connect a <b>y</b>, <b>-1</b>, and <b>1</b> to an <b>if</b>{" "}
-            block, in that order, just like in step 3 to 5. It should look like
-            this.
-            <br />
-            10. Then add another <b>y</b>, <b>2</b>, and <b>mult</b> block.
-            <br />
-            11. Connect the <b>y</b>, <b>2</b> and previous <b>if</b> block to
-            the <b>mult</b> block.
-            <br />
-            12. After this is completed, let’s add a <b>sum</b> block. Connect
-            this to the <b>mult</b> blocks we used with <b>x</b>, and with{" "}
-            <b>y</b> to it.
-            <br />
-            13. We’re also going to add another value block and set it to{" "}
-            <b>2</b>. Then, connect it to the sum block. We should now have a
-            diamond shaped rhombus outline!
-            <br />
-            14. To make this image more clear, we’re going to add a <b>
-              sign
-            </b>{" "}
-            block. Connect <b>sum</b> to <b>sign</b> and click the preview; you
-            should see a rhombus!
+            5. To make this image more clear, we’re going to add 
+            a <b>sign</b> block. Connect <b>sum</b> to <b>sign</b> and 
+            click the preview; you should see a rhombus!
           </Container>
         ),
 
@@ -1529,20 +1515,8 @@ const sections = [
         final: <Container> This is the final image </Container>,
         isChallenge: true,
         //Challenges
-        challenges: [
-          {
-            question: (
-              <Container>
-                <p1>
-                  {" "}
-                  Try making a rhombus using a different equation: <br />
-                </p1>
-                <MISTImage code="sign(wsum(abs(y),abs(x)))" resolution="250" />
-              </Container>
-            ),
-            hint: <Container> This is a hint 1 </Container>,
-          },
-          {
+        challenges: 
+        [{
             question: (
               <Container>
                 <p1>
@@ -1562,7 +1536,7 @@ const sections = [
                 <Link to="#resizing">here </Link> for the resizing tutorial!
               </Container>
             ),
-          },
+          }
         ],
       },
     ],
@@ -1702,20 +1676,18 @@ const sections = [
         //Text
         text: (
           <Container>
-            You are familiar with the following circle:In this tutorial, you
-            will learn how to move this image along the x and y axis (vertically
-            and horizontally).
+            In this tutorial, we will be starting with a circle. If you are unfamiliar with how 
+            to make on, click{" "} <Link to="#circle">here </Link> for the circle tutorial!
             <br />
             1. To move the circle horizontally, we have to add or subtract some
-            value from the <b>x</b> value. In this case we are adding <b>0.5</b>
-            .
+            value from the <b>x</b> value. In this case we are adding <b>0.5</b>.
             <br />
             2. When finishing this up, you get a circle that is slightly to the
             left. Now try moving it to the right!
             <br />
             3. Similarly to the horizontal example, to move the circle
-            vertically, we have to add or subtract some value from the <b>y</b>y
-            value. In this case we are adding <b>0.5</b> to <b>y</b>.
+            vertically, we have to add or subtract some value from 
+            the <b>y</b> value. In this case we are adding <b>0.5</b> to <b>y</b>.
             <br />
             4. When finishing this up, you get a circle that is slightly up. Now
             try moving it down!
@@ -1869,8 +1841,8 @@ const sections = [
     //+------------------+
     subsections: [
       {
-        title: "Colorful Image",
-        id: "colorful-image",
+        title: "Colorful Animation",
+        id: "colorful-animation",
         keywords: ["color", "animation", "interesting"],
         image: (
           <MISTImage
@@ -1882,7 +1854,7 @@ const sections = [
         //Text
         text: (
           <Container>
-            Here is an example of a colorful image using many of the skills you
+            Here is an example of a colorful animation using many of the skills you
             just learned!
             <br />
             1. To start, add an <b>x</b>, <b>y</b>, and <b>t.s</b> variable to
@@ -1938,7 +1910,7 @@ const sections = [
               <Container>
                 {" "}
                 <p1>
-                  Try making the following image: <br />
+                  Try making the following animation: <br />
                 </p1>
                 <MISTImage
                   code="rgb(cos(sin(sin(x))),sum(cos(sin(sin(x))),y),y)"
@@ -1980,7 +1952,7 @@ const sections = [
             <br />
             1. Start by adding an <b>x</b> and a <b>y</b> variable.
             <br />
-            2. Next, add a <b>sqr</b>, <b>mult</b>, and <b>neg</b>. Connect the
+            2. Next, add a <b>sqr</b>, <b>mult</b>, and <b>neg</b>. Connect the 
             <b>x</b> to the <b>sqr</b> and <b>mult</b> and the <b>y</b> to the{" "}
             <b>mult</b> and <b>neg</b>.
             <br />
@@ -1993,7 +1965,7 @@ const sections = [
             block in the workspace. and it.
             <br />
             6. On their own, the images look simple, but now it's time to put it
-            all together. Start by adding a<b>wsum</b>. From there, connect both
+            all together. Start by adding a <b>wsum</b>. From there, connect both
             of the <b>neg</b> blocks and <b>mult</b> blocks. Additionally,
             connect the <b>m.x</b> block to the <b>wsum</b> block as well.
             <br />
@@ -2014,7 +1986,7 @@ const sections = [
             question: (
               <Container>
                 <p1>
-                  Try making the following image: <br />
+                  Try making the following animation: <br />
                 </p1>
                 <MISTImage code="sin(sin(sum(m.x,x)))" resolution="250" />
               </Container>
