@@ -1650,11 +1650,7 @@ const sections = [
             <br />
             2. Add a constant and set it equal to <b>-0.5</b>.
             <br />
-            3. Connect this to the <b>sum</b> block.
-            <br />
-            4. Bring a <b>sign</b> block into the workspace.
-            <br />
-            5. Connect the <b>sum</b> block to it. See how the triangle got
+            3. Connect this to the <b>sum</b> block. Take a look at how the triangle got
             smaller!
           </Container>
         ),
