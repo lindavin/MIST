@@ -366,8 +366,25 @@ function Tutorials() {
 
                 {/* Text, Video, Final, Challenges sections */}
                 <Text text={subsection.text} id={subsection.id} />
-                <Video video={subsection.video} id={subsection.id} />
-                <Final final={subsection.final} id={subsection.id} />
+                {subsection.isVideo ? (
+                <Video
+                  video={subsection.video}
+                  id={subsection.id}
+                />
+
+                ) : (
+                  ""
+                )}
+                {/* <Final final={subsection.final} id={subsection.id} /> */}
+                {subsection.isFinal ? (
+                <Final
+                  final={subsection.final}
+                  id={subsection.id}
+                />
+
+                ) : (
+                  ""
+                )}
                 {subsection.isChallenge ? (
 
                   <Challenges
@@ -672,13 +689,14 @@ const sections = [
 
           //Video
           video: <Container>This is a video </Container>,
+          isVideo: false,
 
           //Final
+          isFinal: false,
           final: <Container> This is the final imaget </Container>,
 
-          isChallenge: false,
-
           //Challenges
+          isChallenge: false,
           challenges: [
             //   {
             //   question:
@@ -757,9 +775,11 @@ const sections = [
           ),
 
           //Video
+          isVideo: false,
           video: <Container> This is a video </Container>,
 
           //Final
+          isFinal: false,
           final: <Container> This is the final image </Container>,
 
           isChallenge: false,
@@ -847,9 +867,11 @@ const sections = [
           ),
 
           //Video
+          isVideo: false,
           video: <Container>This is a video </Container>,
 
           //Final
+          isFinal: false,
           final: <Container> This is the final image </Container>,
 
           isChallenge: false,
@@ -902,9 +924,8 @@ const sections = [
           video: <Container>This is a video </Container>,
 
           //Final
-          final: <Container> 
-              <img src={UI3} alt="UI3" style={{height:"75%", width:"75%" }} />
-           </Container>,
+          isFinal: false,
+          final: <Container> </Container>,
 
           isChallenge: false,
           //Challenges
@@ -996,9 +1017,11 @@ const sections = [
         //need to add how to change.
 
         //Video
+        isVideo: true,
         video: <Container> This is a video </Container>,
 
         //Final
+        isFinal: false,
         final: <Container> This is the final image </Container>,
         isChallenge: false,
         //Challenges
@@ -1067,9 +1090,11 @@ const sections = [
         ),
 
         //Video
+        isVideo: true,
         video: <Container> This is a video </Container>,
 
         //Final
+        isFinal: true,
         final: <Container> 
             <img src={Time2} alt="Time Step 2" style={{height:"75%", width:"75%" }} />
            </Container>,
@@ -1139,9 +1164,11 @@ const sections = [
         ),
 
         //Video
+        isVideo: true,
         video: <Container> This is a video </Container>,
 
         //Final
+        isFinal: true,
         final: <Container> 
                 <img src={Mouse2} alt="Moving with the Mouse Step 2" style={{height:"75%", width:"75%" }} />
                </Container>,
@@ -1248,9 +1275,11 @@ const sections = [
         ),
 
         //Video
+        isVideo: true,
         video: <Container> This is a video </Container>,
 
         //Final
+        isFinal: true,
         final: <Container> 
             <img src={MI3} alt="Multiple Inputs Step 4" style={{height:"75%", width:"75%" }} />
           </Container>,
@@ -1353,9 +1382,11 @@ const sections = [
         ),
 
         //Video
+        isVideo: true,
         video: <Container> This is a video </Container>,
 
         //Final
+        isFinal: true,
         final: <Container> 
             <img src={FixedInput3} alt="Fixed Input Step 3" style={{height:"75%", width:"75%" }} />
          </Container>,
@@ -1455,9 +1486,11 @@ const sections = [
         ),
 
         //Video
+        isVideo: true,
         video: <Container> This is a video </Container>,
 
         //Final
+        isFinal: true,
         final: <Container> 
             <img src={AddColor4} alt="AddColor Step 4" style={{height:"75%", width:"75%" }} />
              </Container>,
@@ -1544,10 +1577,12 @@ const sections = [
         ),
 
         //Video
+        isVideo: true,
         video: <Container> <iframe width="560" height="315" src="https://www.youtube.com/embed/YQwvc7hdggE" frameborder="0"
          allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> </Container>,
 
         //Final
+        isFinal: true,
         final: <Container> This is the final image: <br />
                       <img src={Circle3} alt="Circle Final" style={{height:"75%", width:"75%" }} />
                </Container>,
@@ -1618,9 +1653,11 @@ const sections = [
         ),
 
         //Video
+        isVideo: true,
         video: <Container> This is a video </Container>,
 
         //Final
+        isFinal: true,
         final: <Container> 
             <img src={Triangle4} alt="Triangle Step 3" style={{height:"75%", width:"75%" }} />
           </Container>,
@@ -1698,9 +1735,11 @@ const sections = [
         ),
 
         //Video
+        isVideo: true,
         video: <Container> This is a video </Container>,
 
         //Final
+        isFinal: true,
         final: <Container> 
           <img src={Rhombus6} alt="Rhombus Step 1" style={{height:"75%", width:"75%" }} />
         </Container>,
@@ -1773,9 +1812,11 @@ const sections = [
         ),
 
         //Video
+        isVideo: true,
         video: <Container> This is a video </Container>,
 
         //Final
+        isFinal: true,
         final: <Container>             
           <img src={Flip3} alt="Flipping Step 3" style={{height:"75%", width:"75%" }} />
         </Container>,
@@ -1839,9 +1880,11 @@ const sections = [
         ),
 
         //Video
+        isVideo: true,
         video: <Container> This is a video </Container>,
 
         //Final
+        isFinal: true,
         final: <Container> 
           <img src={Resizing2} alt="Resizing Step 2" style={{height:"75%", width:"75%" }} />
         </Container>,
@@ -1916,9 +1959,11 @@ const sections = [
         ),
 
         //Video
+        isVideo: true,
         video: <Container> This is a video </Container>,
 
         //Final
+        isFinal: true,
         final: <Container> 
           <img src={MovingAround2} alt="Moving Around Step 2" style={{height:"75%", width:"75%" }} />
         </Container>,
@@ -2023,9 +2068,11 @@ const sections = [
         ),
 
         //Video
+        isVideo: true,
         video: <Container> This is a video </Container>,
 
         //Final
+        isFinal: true,
         final: <Container> This is the final image </Container>,
         isChallenge: true,
         //Challenges  
@@ -2120,9 +2167,11 @@ const sections = [
         ),
 
         //Video
+        isVideo: true,
         video: <Container> This is a video </Container>,
 
         //Final
+        isFinal: true,
         final: <Container> 
            <img src={CI6} alt="Colorful Animation Step 6" style={{height:"75%", width:"75%" }} />
           </Container>,
@@ -2229,9 +2278,11 @@ const sections = [
         ),
 
         //Video
+        isVideo: true,
         video: <Container> This is a video </Container>,
 
         //Final
+        isFinal: true, 
         final: <Container> 
           <img src={MovingImage7} alt="Moving Image Step 7" style={{height:"75%", width:"75%" }} />
         </Container>,
