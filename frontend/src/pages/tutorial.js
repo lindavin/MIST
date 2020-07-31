@@ -115,10 +115,86 @@ import MISTImage from "./components/MISTImageGallery";
 
 import WorkSpace from "../workspace";
 
+// Pictures for Tutorial Steps
+import AddColor1 from "./../TutorialImages/AddingColorImages/AddingColor1.png";
+import AddColor2 from "./../TutorialImages/AddingColorImages/AddingColor2.png";
+import AddColor3 from "./../TutorialImages/AddingColorImages/AddingColor3.png";
+import AddColor4 from "./../TutorialImages/AddingColorImages/AddingColor4.png";
+
+import CI1 from "./../TutorialImages/ColorfulImage/ColorfulImage1.PNG";
+import CI2 from "./../TutorialImages/ColorfulImage/ColorfulImage2.PNG";
+import CI3 from "./../TutorialImages/ColorfulImage/ColorfulImage3.PNG";
+import CI4 from "./../TutorialImages/ColorfulImage/ColorfulImage4.PNG";
+import CI5 from "./../TutorialImages/ColorfulImage/ColorfulImage5.PNG";
+import CI6 from "./../TutorialImages/ColorfulImage/ColorfulImage6.PNG";
+
 import Circle from "./../TutorialImages/CircleImages/circle.png";
 import Circle1 from "./../TutorialImages/CircleImages/circle1.png";
 import Circle2 from "./../TutorialImages/CircleImages/circle2.png";
 import Circle3 from "./../TutorialImages/CircleImages/circle3.png";
+
+import UI3 from "./../TutorialImages/ExpertUI/UI3.png";
+
+import FixedInput1 from "./../TutorialImages/FixedInputsImages/FixedInput1.png";
+import FixedInput2 from "./../TutorialImages/FixedInputsImages/FixedInput2.png";
+import FixedInput3 from "./../TutorialImages/FixedInputsImages/FixedInput3.png";
+
+import Flip1 from "./../TutorialImages/FlippingImages/FlippingImages1.png";
+import Flip2 from "./../TutorialImages/FlippingImages/FlippingImages2.png";
+import Flip3 from "./../TutorialImages/FlippingImages/FlippingImages3.png";
+
+import GUI1 from "./../TutorialImages/GUI/GUI1.png";
+import GUI2 from "./../TutorialImages/GUI/GUI2.png";
+import GUI3 from "./../TutorialImages/GUI/GUI3.png";
+import GUI4 from "./../TutorialImages/GUI/GUI4.png";
+import GUI5 from "./../TutorialImages/GUI/GUI5.png";
+
+import Mouse1 from "./../TutorialImages/MovingWithMouseImages/Mouse1.png";
+import Mouse2 from "./../TutorialImages/MovingWithMouseImages/Mouse1.png";
+
+import MI1 from "./../TutorialImages/MultipleInputsImages/MultInputs1.png";
+import MI2 from "./../TutorialImages/MultipleInputsImages/MultInputs2.png";
+import MI3 from "./../TutorialImages/MultipleInputsImages/MultInputs3.png";
+
+import MovingAround1 from "./../TutorialImages/MovingAround/MovingAround1.PNG";
+import MovingAround2 from "./../TutorialImages/MovingAround/MovingAround2.PNG";
+
+import MovingImage1 from "./../TutorialImages/MovingImage/MovingImage1.PNG";
+import MovingImage2 from "./../TutorialImages/MovingImage/MovingImage2.PNG";
+import MovingImage3 from "./../TutorialImages/MovingImage/MovingImage3.PNG";
+import MovingImage4 from "./../TutorialImages/MovingImage/MovingImage4.PNG";
+import MovingImage5 from "./../TutorialImages/MovingImage/MovingImage5.PNG";
+import MovingImage6 from "./../TutorialImages/MovingImage/MovingImage6.PNG";
+import MovingImage7 from "./../TutorialImages/MovingImage/MovingImage7.PNG";
+
+import Resizing1 from "./../TutorialImages/ResizingImages/Resizing1.png";
+import Resizing2 from "./../TutorialImages/ResizingImages/Resizing2.png";
+
+import Rhombus1 from "./../TutorialImages/RhombusImages/Rhombus1.png";
+import Rhombus2 from "./../TutorialImages/RhombusImages/Rhombus2.png";
+import Rhombus3 from "./../TutorialImages/RhombusImages/Rhombus3.png";
+import Rhombus4 from "./../TutorialImages/RhombusImages/Rhombus4.png";
+import Rhombus6 from "./../TutorialImages/RhombusImages/Rhombus6.png";
+
+import Time1 from "./../TutorialImages/TimeAndAnimationsImages/Time1.png";
+import Time2 from "./../TutorialImages/TimeAndAnimationsImages/Time2.png";
+import Time3 from "./../TutorialImages/TimeAndAnimationsImages/Time3.png";
+
+import Triangle1 from "./../TutorialImages/Triangle/Triangle1.png";
+import Triangle3 from "./../TutorialImages/Triangle/Triangle3.png";
+import Triangle4 from "./../TutorialImages/Triangle/Triangle4.png";
+
+import Site1 from "./../TutorialImages/Website/Site1.png";
+import Site2 from "./../TutorialImages/Website/Site2.png";
+import Site3 from "./../TutorialImages/Website/Site3.png";
+import Site4 from "./../TutorialImages/Website/Site4.png";
+import Site5 from "./../TutorialImages/Website/Site5.png";
+
+import XY1 from "./../TutorialImages/XYConstantImages/XY1.png";
+import XY2 from "./../TutorialImages/XYConstantImages/XY2.png";
+import XY3 from "./../TutorialImages/XYConstantImages/XY3.png";
+import XY4 from "./../TutorialImages/XYConstantImages/XY4.png";
+import XY5 from "./../TutorialImages/XYConstantImages/XY5.png";
 
 //Tutorial Header
 function Tutorial() {
@@ -620,86 +696,6 @@ const sections = [
         },
 
         //+------------------+----------------------------------------------------------------------------------------------------------------------
-        //| The Workspace    |
-        //+------------------+
-
-        {
-          title: "The Workspace",
-          id: "workspace",
-          keywords: ["graph", "grayscale", "general"],
-          image: <MISTImage code="x" resolution="250" />,
-          isAnimated: false,
-          //Text
-          text: (
-            <Container>
-              Welcome to the workspace! This is where you will be making all of
-              your lovely images from mathematical equations.
-              <br />
-              Here, you are able to choose from a variety of values and
-              functions that allow the images to be made and are connected
-              through lines.
-              <br />
-              Each image has a range of -1 to 1, where -1 represents white and 1
-              represents black; everything in between is gray until the rbg
-              function is used. x-values range from -1 on the left and 1 on the
-              right, while y-values range from -1 at the top to 1 at the bottom.
-              <br />
-              As mentioned before, <b>x</b> and <b>y</b> variables are used a lot. 
-              To access them, hover over the <b>Values</b> tab  on the upper menu bar.
-              <br />
-              Here, you can see not only <b>x</b> and <b>y</b>, but all of the other variables 
-              and constants. To bring them into the workspace, click and drag them down.
-              <br /> 
-              To add a function, hover over the <b>Functions</b> tab. Here, you can
-              include blocks that let you add, multiply, and do many other cool things to your 
-              variables! To use these blocks, you can also click and drag them into the workspace.
-              <br />
-              To connect variables and blocked together, double click on one of them. A line will
-              appear and you can scroll over to the other block and a node will appear. Click
-              on the node and it will connect the blocks together! To delete a line or a block,
-              hover over it and a little trash can icon will appear. Click on this and it will
-              be deleted!
-              <br />
-              To change the theme, click <b>Change Theme</b> in the top left corner. There 
-              are three different options and you can click to see what they look like! 
-              <br />
-              Once you start putting blocks into the workspace, click on them to see the 
-              function appear in the function abr at the bottom of the workspace. To 
-              save the image, make sure your most recently connected block is selected. 
-              From there, click <b>Image</b> in the bottom right corner. Now you can cancel, 
-              download, save it, or enter the expert page. 
-              <br />
-              There are many images and animations you can create in the workspace! 
-              Keep scrolling for more tutorials or go try for yourself by 
-              clicking <b>Create</b> in the menu!
-            </Container>
-          ),
-
-          //Video
-          video: <Container>This is a video </Container>,
-
-          //Final
-          final: <Container> This is the final image </Container>,
-
-          isChallenge: false,
-          //Challenges
-          challenges: [
-            //{
-            //   question:
-            //     <Container> This is a Challenge 1 </Container>,
-            //   hint:
-            //     <Container> This is a hint 1 </Container>
-            // },
-            // {
-            //   question:
-            //     <Container> This is a Challenge 2</Container>,
-            //   hint:
-            //     <Container> This is a hint 2</Container>
-            // }
-          ],
-        },
-
-        //+------------------+----------------------------------------------------------------------------------------------------------------------
         //| The Website      |
         //+------------------+
         {
@@ -719,18 +715,23 @@ const sections = [
               creating your own. Let's begin with the create page, which you can
               get to by clicking "create" on the top left of the page on the
               menu bar.
-              <br />
-              <WorkSpace /> 
+              <br /><br />
+              <img src={Site1} alt="Website Homepage" style={{height:"75%", width:"75%" }} />
+              <br /><br />
               On the create page, you can make your own images using the
               workspace on it.
-              <br />
+              <br /><br />
+              <img src={Site2} alt="Website Create" style={{height:"75%", width:"75%" }} />
+              <br /><br />
               Next is the challenges page, which can also be found by clicking
               the button beside "create." Here, you can click on a challenge,
               which is an image that you try to recreate!
               <br />
               After this, we're going to go to the tutorial page, which is the
               page that we're currently on if you're reading this!
-              <br />
+              <br /><br />
+              <img src={Site3} alt="Website Tutorials" style={{height:"75%", width:"75%" }} />
+              <br /><br />
               Next up is the gallery. With the gallery, you can see what other
               people have created. Here, you can click on images to learn more
               about it. You can see who created the image, how many favorites it
@@ -738,10 +739,14 @@ const sections = [
               <br />
               After this, we can look at the About MIST and development page.
               This explain what MIST is about!
-              <br />
+              <br /><br />
+              <img src={Site4} alt="Website About" style={{height:"75%", width:"75%" }} />
+              <br /><br />
               We can also go to the community guidelines page. This explains the
               guidelines for using MIST and being a respectful of other peoples
-              <br />
+              <br /><br />
+              <img src={Site5} alt="Website Community Guidelines" style={{height:"75%", width:"75%" }} />
+              <br /><br />
               Next we can go to the FAQ, which is still under the "About" tab.
               <br />
               Use the "Sign In/Up" tab to login or sign up for MIST!
@@ -776,6 +781,96 @@ const sections = [
         },
 
         //+------------------+----------------------------------------------------------------------------------------------------------------------
+        //| The Workspace    |
+        //+------------------+
+
+        {
+          title: "The Workspace",
+          id: "workspace",
+          keywords: ["graph", "grayscale", "general"],
+          image: <MISTImage code="x" resolution="250" />,
+          isAnimated: false,
+          //Text
+          text: (
+            <Container>
+              Welcome to the workspace! This is where you will be making all of
+              your lovely images from mathematical equations.
+              <br /><br />
+              <img src={GUI1} alt="GUI" style={{height:"75%", width:"75%" }} />
+              <br /><br />
+              Here, you are able to choose from a variety of values and
+              functions that allow the images to be made and are connected
+              through lines.
+              <br />
+              Each image has a range of -1 to 1, where -1 represents white and 1
+              represents black; everything in between is gray until the rbg
+              function is used. x-values range from -1 on the left and 1 on the
+              right, while y-values range from -1 at the top to 1 at the bottom.
+              <br />
+              As mentioned before, <b>x</b> and <b>y</b> variables are used a lot. 
+              To access them, hover over the <b>Values</b> tab  on the upper menu bar.
+              <br />
+              Here, you can see not only <b>x</b> and <b>y</b>, but all of the other variables 
+              and constants. To bring them into the workspace, click and drag them down.
+              <br /> <br />
+              <img src={GUI2} alt="GUI 2" style={{height:"75%", width:"75%" }} />
+              <br /><br />
+              To add a function, hover over the <b>Functions</b> tab. Here, you can
+              include blocks that let you add, multiply, and do many other cool things to your 
+              variables! To use these blocks, you can also click and drag them into the workspace.
+              <br /><br />
+              <img src={GUI3} alt="GUI 3" style={{height:"75%", width:"75%" }} />
+              <br /><br />
+              To connect variables and blocked together, double click on one of them. A line will
+              appear and you can scroll over to the other block and a outlet will appear. Click
+              on the outlet and it will connect the blocks together! To delete a line or a block,
+              hover over it and a little trash can icon will appear. Click on this and it will
+              be deleted!
+              <br /><br />
+              <img src={GUI5} alt="GUI5" style={{height:"75%", width:"75%" }} />
+              <br /><br />
+              To change the theme, click <b>Change Theme</b> in the top left corner. There 
+              are three different options and you can click to see what they look like! 
+              <br />
+              Once you start putting blocks into the workspace, click on them to see the 
+              function appear in the function abr at the bottom of the workspace. To 
+              save the image, make sure your most recently connected block is selected. 
+              From there, click <b>Image</b> in the bottom right corner. Now you can cancel, 
+              download, save it, or enter the expert page. 
+              <br /><br />
+              <img src={GUI4} alt="GUI4" style={{height:"75%", width:"75%" }} />
+              <br /><br />
+              There are many images and animations you can create in the workspace! 
+              Keep scrolling for more tutorials or go try for yourself by 
+              clicking <b>Create</b> in the menu!
+            </Container>
+          ),
+
+          //Video
+          video: <Container>This is a video </Container>,
+
+          //Final
+          final: <Container> This is the final image </Container>,
+
+          isChallenge: false,
+          //Challenges
+          challenges: [
+            //{
+            //   question:
+            //     <Container> This is a Challenge 1 </Container>,
+            //   hint:
+            //     <Container> This is a hint 1 </Container>
+            // },
+            // {
+            //   question:
+            //     <Container> This is a Challenge 2</Container>,
+            //   hint:
+            //     <Container> This is a hint 2</Container>
+            // }
+          ],
+        },
+
+        //+------------------+----------------------------------------------------------------------------------------------------------------------
         //| The Expert UI    |
         //+------------------+
 
@@ -786,15 +881,32 @@ const sections = [
           image: <MISTImage code="x" resolution="250" />,
           isAnimated: false,
           //Text
-          text: <Container>This section is about the Expert UI!</Container>,
+          text: <Container>
+            Welcome to the Expert UI!
+            <br />
+            The Expert UI page works similarly to the Workspace. Only, instead of dragging in blocks, 
+            the equations are created with your keyboard and own formulas. 
+            <br />
+            To start, you can use the functions on the left, or create or enter your own. In this 
+            case, instead of dragging in an <b>x</b> variable like you would in the workspace,
+            look at the page where it says "code" and type <b>x</b>. Look to the right side of the 
+            screen and click the play button. You should see the image of <b>x</b> appear. 
+            <br /><br />
+              <img src={UI3} alt="UI3" style={{height:"75%", width:"75%" }} />
+            <br /><br />
+            To learn more about different functions that you can make, follow the tutorials below
+            and then try to create them here!
+          </Container>,
 
           //Video
           video: <Container>This is a video </Container>,
 
           //Final
-          final: <Container> This is the final image </Container>,
+          final: <Container> 
+              <img src={UI3} alt="UI3" style={{height:"75%", width:"75%" }} />
+           </Container>,
 
-          isChallenge: true,
+          isChallenge: false,
           //Challenges
           challenges: [
             {
@@ -862,15 +974,24 @@ const sections = [
             The <b>X</b> variable ranges from -1 to 1 based on the x-values.
             This means that from left to right, the colors of this block change
             white to black. This is because x-values change horizontally.
-            <br />
+            <br /><br />
+            <img src={XY1} alt="XYConstants X" style={{height:"75%", width:"75%" }} />
+            <img src={XY2} alt="XYConstants X" style={{height:"75%", width:"75%" }} />
+            <br /><br />
             The <b>Y</b> variable ranges from -1 to 1 based on the y-values.
             Remember that for <b>Y</b>, -1 starts at the top and 1 is at the
             bottom. Therefore, white is at the top and slowly turns black, which
             comes from y-values changing hoizontally.
+            <br /><br />
+            <img src={XY3} alt="XYConstants X" style={{height:"75%", width:"75%" }} />
+            <img src={XY4} alt="XYConstants X" style={{height:"75%", width:"75%" }} />
+            <br /><br />
             <br />A constant is a value that doesn't change, hence the name
-            constant. For example, if we had the value <b>2</b>, it would always
-            remain as <b>2</b>.
-          </Container>
+            constant. For example, if we had the value <b>0.5</b>, it would always
+            remain as <b>0.5</b>.
+            <br /><br />
+            <img src={XY5} alt="XYConstants X" style={{height:"75%", width:"75%" }} />         
+            </Container>
         ),
         //need to add how to change.
 
@@ -924,17 +1045,24 @@ const sections = [
             To show an example of this:
             <br />
             1. Add an <b>x</b> and <b>t.s</b> variable to the workspace.
-            <br />
+            <br /><br />
+            <img src={Time1} alt="Time Step 1" style={{height:"75%", width:"75%" }} />
+            <br /><br />
             2. Drag in a <b>mult</b> block and connect the <b>x</b> and{" "}
             <b>t.s</b> to it. Now you can see time changes what was once a a
             simple <b>x</b> image.
-            <br />
+            <br /><br />
+            <img src={Time2} alt="Time Step 2" style={{height:"75%", width:"75%" }} />
+            <br /><br />
             3. To change the speed of the animation, bring in a <b>
               constant
             </b>{" "}
             variable and set it equal to 2. Connect this to the <b>mult</b>{" "}
             block that is already there and see how the speed changes. It should
             move much quicker now!
+            <br /><br />
+            <img src={Time2} alt="Time Step 2" style={{height:"75%", width:"75%" }} />
+            <br /><br />
           </Container>
         ),
 
@@ -942,7 +1070,9 @@ const sections = [
         video: <Container> This is a video </Container>,
 
         //Final
-        final: <Container> This is the final image </Container>,
+        final: <Container> 
+            <img src={Time2} alt="Time Step 2" style={{height:"75%", width:"75%" }} />
+           </Container>,
         isChallenge: true,
         //Challenges
         challenges: [
@@ -962,11 +1092,7 @@ const sections = [
                 What happens when some variables get multipled?{" "}
               </Container>
             ),
-          },
-          {
-            question: <Container> This is a Challenge 2 </Container>,
-            hint: <Container> This is a hint 2</Container>,
-          },
+          }
         ],
       },
 
@@ -997,10 +1123,18 @@ const sections = [
             To try it yourself:
             <br />
             1. Bring a <b>x</b>, <b>y</b>,<b>m.x</b> and <b>m.y</b> variable
-            into the workspace.
-            <br />
-            2. Then add a <b>wsum</b> in and connect all 4 variables to it. You
-            should have a simple animation that moves when you hover over it!
+            into the workspace. 
+            <br /><br />
+            <img src={Mouse1} alt="Moving with the Mouse Step 1" style={{height:"75%", width:"75%" }} />
+            <br /><br />
+            2. Then add a <b>wsum</b> in and connect all 4 variables to it. 
+            Using <b>wsum</b> on <b>x</b> and <b>y</b> give it the original
+            static image. When the <b>m.x</b> and <b>m.y</b> gets added, the 
+            you can move the image with any direction of your mouse! Now you 
+            should have a simple animation!
+            <br /><br />
+            <img src={Mouse2} alt="Moving with the Mouse Step 2" style={{height:"75%", width:"75%" }} />
+            <br /><br />
           </Container>
         ),
 
@@ -1008,7 +1142,9 @@ const sections = [
         video: <Container> This is a video </Container>,
 
         //Final
-        final: <Container> This is the final image </Container>,
+        final: <Container> 
+                <img src={Mouse2} alt="Moving with the Mouse Step 2" style={{height:"75%", width:"75%" }} />
+               </Container>,
         isChallenge: true,
         //Challenges
         challenges: [
@@ -1088,17 +1224,26 @@ const sections = [
             The <b>avg</b> function averages together values. For example, the
             average of -1 and 1 is 0.
             <br />
-            To use this yourself try:
+            To use these yourself try:
             <br />
-            1. Adding an <b>x</b> and <b>y</b> variable to the workspace.
-            <br />
+            1. Add an <b>x</b> and <b>y</b> variable to the workspace.
+            <br /><br />
+            <img src={Circle} alt="Multiple Inputs Step 1" style={{height:"75%", width:"75%" }} />
+            <br /><br />
             2. Then add a <b>sum</b> block and a <b>mult</b> block in.
-            <br />
+            <br /><br />
+            <img src={MI1} alt="Multiple Inputs Step 2" style={{height:"75%", width:"75%" }} />
+            <br /><br />
             3. Connect the <b>x</b> to the <b>sum</b> block twice, and then the{" "}
             <b>y</b> to the <b>mult</b> twice.
-            <br />
+            <br /><br />
+            <img src={MI2} alt="Multiple Inputs Step 3" style={{height:"75%", width:"75%" }} />
+            <br /><br />
             4. Then bring in an <b>avg</b> block and connect the <b>sum</b> and{" "}
             <b>mult</b> block to it! Now take a look at your final image!
+            <br /><br />
+            <img src={MI3} alt="Multiple Inputs Step 4" style={{height:"75%", width:"75%" }} />
+            <br /><br />
           </Container>
         ),
 
@@ -1106,7 +1251,9 @@ const sections = [
         video: <Container> This is a video </Container>,
 
         //Final
-        final: <Container> This is a final image </Container>,
+        final: <Container> 
+            <img src={MI3} alt="Multiple Inputs Step 4" style={{height:"75%", width:"75%" }} />
+          </Container>,
         isChallenge: true,
         //Challenges
         challenges: [
@@ -1185,16 +1332,23 @@ const sections = [
             <br />
             1. Drag a <b>x</b> and <b>y</b> variable into the workspace along
             with an <b>if</b> block.
-            <br />
-            2. Connect the <b>x</b> to the first two nodes of the <b>if</b>{" "}
+            <br /><br />
+            <img src={FixedInput1} alt="Fixed Input Step 1" style={{height:"75%", width:"75%" }} />
+            <br /><br />
+            2. Connect the <b>x</b> to the first two outlets of the <b>if</b>{" "}
             block.
-            <br />
-            3. Then, connect the <b>y</b> variable to the third node of the{" "}
+            <br /><br />
+            <img src={FixedInput2} alt="Fixed Input Step 2" style={{height:"75%", width:"75%" }} />
+            <br /><br />
+            3. Then, connect the <b>y</b> variable to the third outlet of the{" "}
             <b>if</b> block. In this example , the test case, which is the first
             input, is <b>x</b>. So while the input is less than 0, the returned
             value is negative, which means that it calls <b>y</b>. When it
             reaches 0 or greater, it returns positive, which in this case is x.
             This is why the image looks "split" in this case.
+            <br /><br />
+            <img src={FixedInput3} alt="Fixed Input Step 3" style={{height:"75%", width:"75%" }} />
+            <br /><br />
           </Container>
         ),
 
@@ -1202,7 +1356,9 @@ const sections = [
         video: <Container> This is a video </Container>,
 
         //Final
-        final: <Container> This is the final image </Container>,
+        final: <Container> 
+            <img src={FixedInput3} alt="Fixed Input Step 3" style={{height:"75%", width:"75%" }} />
+         </Container>,
         isChallenge: true,
         //Challenges
         challenges: [
@@ -1277,14 +1433,24 @@ const sections = [
             <br />
             1. Start by adding an <b>x</b>, <b>x</b>, and <b>y</b> to your
             workspace.
-            <br />
+            <br /><br />
+            <img src={AddColor1} alt="AddColor Step 1" style={{height:"75%", width:"75%" }} />
+            <br /><br />
             2. Drag in a <b>mult</b> block and connect y to it twice.
             <br />
-            3. Add a <b>sin</b> and connect the <b>x</b> to it.
             <br />
+            <img src={AddColor2} alt="AddColor Step 2" style={{height:"75%", width:"75%" }} />
+            <br /><br />
+            3. Add a <b>sin</b> and connect the <b>x</b> to it.
+            <br /><br />
+            <img src={AddColor3} alt="AddColor Step 3" style={{height:"75%", width:"75%" }} />
+            <br /><br />
             4. Finally, bring in a <b>RGB</b> block. Connect the <b>mult</b>{" "}
-            block to the red, the x to the green, and sign to the blue. Check
+            block to the red, the <b>x</b> to the green, and sig<b>sin</b>n to the blue. Check
             out your colorful image!
+            <br /><br />
+            <img src={AddColor4} alt="AddColor Step 3" style={{height:"75%", width:"75%" }} />
+            <br /><br />
           </Container>
         ),
 
@@ -1292,7 +1458,9 @@ const sections = [
         video: <Container> This is a video </Container>,
 
         //Final
-        final: <Container> This is the final image </Container>,
+        final: <Container> 
+            <img src={AddColor4} alt="AddColor Step 4" style={{height:"75%", width:"75%" }} />
+             </Container>,
         isChallenge: true,
         //Challenges
         challenges: [
@@ -1433,14 +1601,19 @@ const sections = [
             Making a basic triangle is pretty straightforward!
             <br />
             1. Drag in a <b>x</b> and a <b>y</b> in the workspace.
-            <br />
-            2. Add a <b>sum</b> block. You can also add a wsum block to see how
+            <br /><br />
+            <img src={Triangle1} alt="Triangle Step 1" style={{height:"75%", width:"75%" }} />
+            <br /><br />
+            2. Add a <b>sum</b> block and connect <b>x</b> and <b>y</b>. You can also add a wsum block to see how
             they look different. However, in this tutorial, we will just be
             focusing on sum.
-            <br />
+            <br /><br />
+            <img src={Triangle3} alt="Triangle Step 2" style={{height:"75%", width:"75%" }} />
+            <br /><br />
             3. Next, place in a <b>sign</b> block. Now if you click on the
             preview button, you will see that you have a triangle!
-            <br />
+            <br /><br />            
+            <img src={Triangle4} alt="Triangle Step 3" style={{height:"75%", width:"75%" }} />
           </Container>
         ),
 
@@ -1448,7 +1621,9 @@ const sections = [
         video: <Container> This is a video </Container>,
 
         //Final
-        final: <Container> This is the final image </Container>,
+        final: <Container> 
+            <img src={Triangle4} alt="Triangle Step 3" style={{height:"75%", width:"75%" }} />
+          </Container>,
         isChallenge: true,
         //Challenges
         challenges: [
@@ -1494,21 +1669,31 @@ const sections = [
         //Text
         text: (
           <Container>
-            For a rhombus, we’re going to add <b>x</b> and <b>y</b> blocks.
+            For a rhombus, we’re going to start like a circle.
             <br />
             1. Place an <b>x</b> and a <b>y</b> in the workspace.
-            <br />
+            <br /><br />
+            <img src={Rhombus1} alt="Rhombus Step 1" style={{height:"75%", width:"75%" }} />
+            <br /><br />
             2. Then bring two <b>abs</b> into the workspace. 
             Connect <b>x</b> to one of them, and the connect <b>y</b> to the other 
             one.
-            <br />
+            <br /><br />
+            <img src={Rhombus2} alt="Rhombus Step 2" style={{height:"75%", width:"75%" }} />
+            <br /><br />            
             3. Add <b>wsum</b>. And make sure it has a W in the front!
-            <br />
+            <br /><br />
+            <img src={Rhombus3} alt="Rhombus Step 3" style={{height:"75%", width:"75%" }} />
+            <br /><br />            
             4. Connect it to a <b>sign</b> function! 
-            <br />
+            <br /><br />
+            <img src={Rhombus4} alt="Rhombus Step 4" style={{height:"75%", width:"75%" }} />
+            <br /><br />
             5. To make this image more clear, we’re going to add 
             a <b>sign</b> block. Connect <b>sum</b> to <b>sign</b> and 
             click the preview; you should see a rhombus!
+            <br /><br />
+            <img src={Rhombus6} alt="Rhombus Step 1" style={{height:"75%", width:"75%" }} />
           </Container>
         ),
 
@@ -1516,7 +1701,9 @@ const sections = [
         video: <Container> This is a video </Container>,
 
         //Final
-        final: <Container> This is the final image </Container>,
+        final: <Container> 
+          <img src={Rhombus6} alt="Rhombus Step 1" style={{height:"75%", width:"75%" }} />
+        </Container>,
         isChallenge: true,
         //Challenges
         challenges: 
@@ -1569,12 +1756,19 @@ const sections = [
             <br />
             1. Start by making a triangle. Click{" "}
             <Link to="#triangle">here </Link> for the triangle tutorial!
-            <br />
+            <br /><br />
+            <img src={Flip1} alt="Flipping Step 1" style={{height:"75%", width:"75%" }} />
+            <br /><br />
             To flip horizontally: <br />
-            3. Add a <b> neg </b> function to the <b>x </b> value
-            <br />
+            2. Add a <b> neg </b> function to the <b>x </b> value
+            <br /><br />
+            <img src={Flip2} alt="Flipping Step 2" style={{height:"75%", width:"75%" }} />
+            <br /><br />
             To flip vertically: <br />
-            4. Add a <b> neg </b> function to the <b>y </b> value
+            3. Add a <b> neg </b> function to the <b>y </b> value
+            <br /><br />
+            <img src={Flip3} alt="Flipping Step 3" style={{height:"75%", width:"75%" }} />
+            <br /><br />
           </Container>
         ),
 
@@ -1582,7 +1776,9 @@ const sections = [
         video: <Container> This is a video </Container>,
 
         //Final
-        final: <Container> This is the final image </Container>,
+        final: <Container>             
+          <img src={Flip3} alt="Flipping Step 3" style={{height:"75%", width:"75%" }} />
+        </Container>,
         isChallenge: true,
         //Challenges
         challenges: [
@@ -1625,14 +1821,20 @@ const sections = [
             <br />
             1. Start by making a triangle. Click{" "}
             <Link to="#triangle">here </Link> for the triangle tutorial!
-            <br />
+            <br /><br />
+            <img src={Triangle4} alt="Resizing Step 1" style={{height:"75%", width:"75%" }} />
+            <br /><br />
             2. Add a constant and set it equal to <b>-0.5</b>. In this case, cause we
              are trying to make an image smaller, we are using a negative number. 
              If we wanted to make a larger, we would use a positive one. This is
              because it adds to or lessens the size of the object it is being used with.
-            <br />
+            <br /><br />
+            <img src={Resizing1} alt="Resizing Step 2" style={{height:"75%", width:"75%" }} />
+            <br /><br />
             3. Connect this to the <b>sum</b> block. Take a look at how the triangle got
             smaller!
+            <br /><br />
+            <img src={Resizing2} alt="Resizing Step 2" style={{height:"75%", width:"75%" }} />
           </Container>
         ),
 
@@ -1640,7 +1842,9 @@ const sections = [
         video: <Container> This is a video </Container>,
 
         //Final
-        final: <Container> This is the final image </Container>,
+        final: <Container> 
+          <img src={Resizing2} alt="Resizing Step 2" style={{height:"75%", width:"75%" }} />
+        </Container>,
         isChallenge: true,
         //Challenges
         challenges: [
@@ -1687,20 +1891,27 @@ const sections = [
             to make on, click{" "} <Link to="#circle">here </Link> for the circle tutorial!
             <br />
             1. To move the circle horizontally, we have to add or subtract some
-            value from the <b>x</b> value. In this case we are adding <b>0.5</b>.
+            value from the <b>x</b> value. In this case we are adding <b>0.5</b> with the <b>sum </b> block.
             <br />
             2. When finishing this up, you get a circle that is slightly to the
-            left. This is because when we add 0.5, the center moves 0.5 along the
-            x-axis, which makes the overall images shift left. Now try moving it to the right! 
-            <br />
+            left. This is because when we add <b>0.5</b> to <b>x</b>, <b>0.5</b> is added to every pixel. In this case,
+            it makes <b>x</b> darker, which means the gray areas are less in the center and more left. When 
+            this gets squared and added back to <b>y</b>, the circle looks like it has also shifted left. 
+            Now try moving it to the right! {/**Could we possibly make this a challenge?**/}
+            <br /><br />
+            <img src={MovingAround1} alt="Moving Around Step 1" style={{height:"75%", width:"75%" }} />
+            <br /><br />
             3. Similarly to the horizontal example, to move the circle
             vertically, we have to add or subtract some value from 
             the <b>y</b> value. In this case we are adding <b>0.5</b> to <b>y</b>.
             <br />
             4. When finishing this up, you get a circle that is slightly up. The reason for this
-            is really similar to the previous steps. When we add 0.5, the center moves 0.5 along the
-            y-axis now, which makes the overall images shift up. Now
-            try moving it down!
+            is really similar to the previous steps. When we add 0.5, every pixel in <b>y</b> looks darker. 
+            When we add this with the <b>x</b> side, which hasn't changed, the circle looks like it
+            shifted up. Now try moving it down!{/**Could we possibly make this a challenge?**/}
+            <br /><br />
+            <img src={MovingAround2} alt="Moving Around Step 2" style={{height:"75%", width:"75%" }} />
+            <br /><br />
           </Container>
         ),
 
@@ -1708,7 +1919,9 @@ const sections = [
         video: <Container> This is a video </Container>,
 
         //Final
-        final: <Container> This is the final image </Container>,
+        final: <Container> 
+          <img src={MovingAround2} alt="Moving Around Step 2" style={{height:"75%", width:"75%" }} />
+        </Container>,
         isChallenge: true,
         //Challenges
         challenges: [
@@ -1754,8 +1967,10 @@ const sections = [
           <Container>
             You might have created some cool pictures by now. In this tutorial
             you will learn how to put them together into one piece. To do so, we
-            need to use the if function. Let’s say you have the following 3
-            images:
+            need to use the if function. Let’s say you have the following image
+            of a circle, Y, and triangle:
+            <br />
+
             <br />
             And you want to make it into the following:
             <br />
@@ -1869,25 +2084,38 @@ const sections = [
             <br />
             1. To start, add an <b>x</b>, <b>y</b>, and <b>t.s</b> variable to
             the workspace.
-            <br />
+            <br /><br />
+            <img src={CI1} alt="Colorful Animation Step 1" style={{height:"75%", width:"75%" }} />
+            <br /><br />            
             2. After this, bring in a <b>sin</b> and <b>cos</b> block. Connect
             the <b>x</b> to <b>cos</b> first then <b>sin</b>. If we click on the
             previews for <b>sin</b> and <b>cos</b>, we can see how the
             differences in how they look!
-            <br />
+            <br /><br />
+            <img src={CI2} alt="Colorful Animation Step 2" style={{height:"75%", width:"75%" }} />
+            <br /><br />              
             3. Now, let’s add another <b>sin</b> block and connect the{" "}
             <b>sin</b> from the previous step to it.
-            <br />
+            <br /><br />
+            <img src={CI3} alt="Colorful Animation Step 3" style={{height:"75%", width:"75%" }} />
+            <br /><br />  
             4. Next, we’re going to drag in a <b>mult</b> block. Let’s connect
             the <b>sin</b> block and the <b>y</b> variable to it!
-            <br />
+            <br /><br />
+            <img src={CI4} alt="Colorful Animation Step 4" style={{height:"75%", width:"75%" }} />
+            <br /><br />  
             5. Add a <b>wsum</b> block. We’re going to connect <b>t.s</b> and{" "}
             <b>y</b> to this.
-            <br />
+            <br /><br />
+            <img src={CI5} alt="Colorful Animation Step 5" style={{height:"75%", width:"75%" }} />
+            <br /><br />  
             6. Finally, connect this to an <b>rgb</b> block. We’ll start at the
             top, with <b>sin</b> being red, the <b>mult</b> block going to
             green, and <b>wsum</b> connecting to blue. Now look at this colorful
             animation you just made!
+            <br /><br />
+            <img src={CI6} alt="Colorful Animation Step 6" style={{height:"75%", width:"75%" }} />
+            <br /><br />  
           </Container>
         ),
 
@@ -1895,7 +2123,9 @@ const sections = [
         video: <Container> This is a video </Container>,
 
         //Final
-        final: <Container> This is the final image </Container>,
+        final: <Container> 
+           <img src={CI6} alt="Colorful Animation Step 6" style={{height:"75%", width:"75%" }} />
+          </Container>,
         isChallenge: true,
         //Challenges
         challenges: [
@@ -1961,26 +2191,40 @@ const sections = [
             begin:
             <br />
             1. Start by adding an <b>x</b> and a <b>y</b> variable.
-            <br />
-            2. Next, add a <b>sqr</b>, <b>mult</b>, and <b>neg</b>. Connect the 
-            <b>x</b> to the <b>sqr</b> and <b>mult</b> and the <b>y</b> to the{" "}
-            <b>mult</b> and <b>neg</b>.
-            <br />
+            <br /><br />
+            <img src={MovingImage1} alt="Moving Image Step 1" style={{height:"75%", width:"75%" }} />
+            <br /><br />
+            2. Next, add a <b>sqr</b>, <b>mult</b>, and <b>neg</b>. Connect the {" "}
+             <b>x</b> to the <b>sqr</b> and <b>mult</b> and the <b>y</b> to the{" "}
+             <b>mult</b> and <b>neg</b>.
+             <br /><br />
+            <img src={MovingImage2} alt="Moving Image Step 2" style={{height:"75%", width:"75%" }} />
+            <br /><br />
             3. Then bring in another <b>neg</b> block and connect the <b>sqr</b>{" "}
             to this.
-            <br />
-            4. Add a <b>t.s</b>, <b>m.x</b>, and <b>m.y</b>.
-            <br />
+            <br /><br />
+            <img src={MovingImage3} alt="Moving Image Step 3" style={{height:"75%", width:"75%" }} />
+            <br /><br />
+            4. Add a <b>t.s</b>, <b>m.x</b>, <b>m.y</b>, and a <b>mult</b> block.
+            <br /><br />
+            <img src={MovingImage4} alt="Moving Image Step 4" style={{height:"75%", width:"75%" }} />
+            <br /><br />
             5. Connect the <b>t.s</b> and <b>m.y</b> to the new <b>mult</b>{" "}
-            block in the workspace. and it.
-            <br />
-            6. On their own, the images look simple, but now it's time to put it
-            all together. Start by adding a <b>wsum</b>. From there, connect both
-            of the <b>neg</b> blocks and <b>mult</b> blocks. Additionally,
-            connect the <b>m.x</b> block to the <b>wsum</b> block as well.
-            <br />
-            7. Finally, connect the <b>wsum</b> to a new <b>sin</b> block and
+            block in the workspace. 
+            <br /><br />
+            <img src={MovingImage5} alt="Moving Image Step 5" style={{height:"75%", width:"75%" }} />
+            <br /><br />
+            6.  Add a  <b>wsum</b> to the workspace, and connect it to both
+            of the <b>neg</b> and <b>mult</b> blocks. Connect the <b>m.x</b> block to the <b>wsum</b> block as well.
+            <br /><br />
+            <img src={MovingImage6} alt="Moving Image Step 6" style={{height:"75%", width:"75%" }} />
+            <br /><br />
+            7. On their own, the images look simple, but now it's time to put it
+            all together. Connect the <b>wsum</b> to a new <b>sin</b> block and
             check out the final image!
+            <br /><br />
+            <img src={MovingImage7} alt="Moving Image Step 7" style={{height:"75%", width:"75%" }} />
+            <br /><br />
           </Container>
         ),
 
@@ -1988,7 +2232,9 @@ const sections = [
         video: <Container> This is a video </Container>,
 
         //Final
-        final: <Container> This is the final image </Container>,
+        final: <Container> 
+          <img src={MovingImage7} alt="Moving Image Step 7" style={{height:"75%", width:"75%" }} />
+        </Container>,
         isChallenge: true,
         //Challenges
         challenges: [
