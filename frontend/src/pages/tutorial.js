@@ -121,6 +121,8 @@ import AddColor2 from "./../TutorialImages/AddingColorImages/AddingColor2.png";
 import AddColor3 from "./../TutorialImages/AddingColorImages/AddingColor3.png";
 import AddColor4 from "./../TutorialImages/AddingColorImages/AddingColor4.png";
 
+import Assemble1 from "./../TutorialImages/Assemble/Assemble1.PNG";
+
 import CI1 from "./../TutorialImages/ColorfulImage/ColorfulImage1.PNG";
 import CI2 from "./../TutorialImages/ColorfulImage/ColorfulImage2.PNG";
 import CI3 from "./../TutorialImages/ColorfulImage/ColorfulImage3.PNG";
@@ -2025,20 +2027,26 @@ const sections = [
           <Container>
             You might have created some cool pictures by now. In this tutorial
             you will learn how to put them together into one piece. To do so, we
-            need to use the if function. Let’s say you have the following image
-            of a circle, Y, and triangle:
+            need to use the if function. Let’s say you have the following 3
+            images; a solid black circle, a Y variable square, and a triangle.
+            <br /><br />
+            <MISTImage code="sign(wsum(square(x),square(y)))" resolution="250"/>            
+            {" "}
+            <MISTImage code="y" resolution="250"/>
+            {" "}
+            <MISTImage code="sign(sum(x,y))" resolution="250"/> 
+            <br /><br />
+            And you want to make it into the following: a gray circle that
+            follows the hombre pattern of the Y variable, over a solid triangle.
             <br />
-
-            <br />
-            And you want to make it into the following:
-            <br />
-            It uses the circle outline, and uses the second picture as the
-            inside of the circle and the third picture as the outside of the
-            circle. You just need to connect them together with an if function:
-            <br />
+            You just need to connect them together with an if function:
+            <br /> 
             Remember what if does? It takes 3 inputs in -- 3 images. It uses the
             second image in all the positive parts of the first image, and the
-            third imagery all the negative parts of the image.
+            third image in all the negative parts of the image.
+            <br />
+            Also, remember that MIST images range from a scale of -1 to 1,
+            accounting for the shades of white, black, and gray!
             <br />
             In the above example, the second image (y) is being used at the
             positive parts (black parts) of the first image (the circle).
@@ -2049,34 +2057,17 @@ const sections = [
             following images:
             <br />
             (These are the same images as in the previous one except the circle
-            is blended.
+            is blended)
             <br />
             It looks the following:
-            <br />
-            This is because sign changes all negative parts into white, and
+            <br /><br />
+            <img src={Assemble1} alt="Assemble Image 1" style={{height:"75%", width:"75%" } } />
+            <br /><br />
+            This is because sign changes all negative parts into white, and all
             positive parts into black. By adding a sign function on the first
-            image input, you will have an easier time seeing through the
-            different parts of the image and the exact dividers.
+            image input, there will be less gray, and you are able to better
+            guess how the outputted image will appear.
             <br />
-            You can also think in quadrants, like in math with graphs and
-            coordinates. For example you can use four different images to make
-            the following:
-            <br />
-            It makes up of the following four images:
-            <br />
-            1. Make each of these shapes:
-            <br />
-            2. Then connect the upper 2 together with an <b>if</b> function, and
-            the bottom 2 together with an <b>if</b> function, while using{" "}
-            <b>y</b> as the first image in both cases. You can see that the
-            upper image is made up of the upper two images, and the bottom one
-            is made up of the bottom two images. They are also being divided up
-            horizontally in the middle. This is how it would look like:
-            <br />
-            3. Now, we can connect these two images together based on the{" "}
-            <b>x</b> image. Since the <b>x</b> function divides the image up
-            vertically in the middle, it uses the first image’s right part, and
-            the second image’s left part.
           </Container>
         ),
 
