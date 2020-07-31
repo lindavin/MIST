@@ -201,6 +201,12 @@ import XY3 from "./../TutorialImages/XYConstantImages/XY3.png";
 import XY4 from "./../TutorialImages/XYConstantImages/XY4.png";
 import XY5 from "./../TutorialImages/XYConstantImages/XY5.png";
 
+//Images for Jumbotron
+import Logo from "./../design/Logos/logoFinal.png";
+import Site6 from "./../TutorialImages/Website/Site6.png";
+import UI2 from "./../TutorialImages/ExpertUI/UI2.png";
+import XY6 from "./../TutorialImages/XYConstantImages/XY6.png";
+
 //Tutorial Header
 function Tutorial() {
   return (
@@ -652,7 +658,7 @@ const sections = [
           title: "Introduction to MIST",
           id: "intro-to-mist",
           keywords: ["introduction", "MIST", "general"],
-          image: <MISTImage code="x" resolution="250" />,
+          image: <img src={Logo} alt="Logo" style={{height:"100%", width:"100%" } } />,
           isAnimated: false,
           //Text
           text: (
@@ -736,7 +742,7 @@ const sections = [
           ref: "#website",
           id: "website",
           keywords: ["graph", "grayscale", "introduction"],
-          image: <MISTImage code="x" resolution="250" />,
+          image: <img src={Site6} alt="Site6" style={{height:"90%", width:"90%" }} />,
           isAnimated: false,
           //Text
           text: (
@@ -823,7 +829,7 @@ const sections = [
           title: "The Workspace",
           id: "workspace",
           keywords: ["graph", "grayscale", "general"],
-          image: <MISTImage code="x" resolution="250" />,
+          image: <img src={XY6} alt="XY6" style={{height:"75%", width:"75%" }} />,
           isAnimated: false,
           //Text
           text: (
@@ -915,7 +921,7 @@ const sections = [
           title: "The Expert UI",
           id: "expert-ui",
           keywords: ["graph", "grayscale", "axis"],
-          image: <MISTImage code="x" resolution="250" />,
+          image: <img src={UI2} alt="UI2" style={{height:"75%", width:"75%" }} />,
           isAnimated: false,
           //Text
           text: <Container>
