@@ -149,6 +149,9 @@ import GUI3 from "./../TutorialImages/GUI/GUI3.png";
 import GUI4 from "./../TutorialImages/GUI/GUI4.png";
 import GUI5 from "./../TutorialImages/GUI/GUI5.png";
 
+import Intro1 from "./../TutorialImages/IntroImages/Intro1.png";
+import Intro2 from "./../TutorialImages/IntroImages/Intro2.png";
+
 import Mouse1 from "./../TutorialImages/MovingWithMouseImages/Mouse1.png";
 import Mouse2 from "./../TutorialImages/MovingWithMouseImages/Mouse1.png";
 
@@ -663,26 +666,35 @@ const sections = [
               All images in MIST are drawn on a square canvas.
               <br />
               We have an x and a y axis, just like in math class!
-              <br />
-              X values range from -1 at the left to 1 at the right. Y values
-              range from -1 at the top to 1 at the bottom (This is different
-              from what you have experienced in math class!).
-              <br />
-              Numbers also represent colors. Since we're working in the range -1
+              <br /><br />
+              <img src={Intro1} alt="Intro Image 1" style={{height:"30%", width:"30%" }} />
+              <br /><br />
+              Numbers represent colors. Since we're working in the range -1
               to 1, we must assign a meaning to each number. We'll start with
               greyscale images. In greyscale, the value 1 represents the color
               black (or lots of ink). Conversely, -1 is white.
               <br />
               And anything between -1 and 1 is grey.
+              <br /><br />
+              <img src={Intro2} alt="Intro Image 2" style={{height:"30%", width:"30%" }} />
+              <br /><br />
+              Here's an image in which each color depends on the x coordinate. {" "}
+              <b>X</b> values range from -1 at 
+              the left to 1 at the right. 
               <br />
-              Here's an image in which each color depends on the x coordinate.
+              <MISTImage code="x" resolution="250"/>
               <br />
-              We would write this as x.
+              <b>Y</b> values range from -1 at the top to 1 at the bottom (This is different
+              from what you have experienced in math class!). Here is an example of that.
+              <br />
+              <MISTImage code="y" resolution="250"/>
               <br />
               We can apply mathematical operations, too. Here's what happens
-              when we multiply x times y. (Don't worry about how we're writing
-              it; you'll use a graphical user interface to build images.) You've
-              learned the basics of the MIST world. It's time to start making
+              when we multiply <b>x</b> times <b>y</b>. (Don't worry about how we're writing
+              it; you'll use a graphical user interface to build images.) 
+              <MISTImage code="mult(x,y)" resolution="250"/>
+              <br />
+              You've learned the basics of the MIST world. It's time to start making
               your own images.
             </Container>
           ),
