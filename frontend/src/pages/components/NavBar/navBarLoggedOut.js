@@ -215,10 +215,15 @@ function SignInCenter() {
     })
       //redirect user to home page
       .then(res => res.json())
-      .then(message => {
-        console.log("message = " + message);
-        if (message === "Success") window.location.href = "/";
-      })
+      .then((message) => {
+        //console.log("message = " + message);
+        if (message === "Success") {
+          window.location.href = "/";
+        } else {
+          console.log(message)
+          alert(message);
+        }
+      });
   }
 
   return (
@@ -267,17 +272,6 @@ function SignInCenter() {
           Sign In
       </Nav.Link>
       </Form>
-    </Nav>
-  );
-}
-
-/* Sign in button */
-function SignInButton(props) {
-  return (
-    <Nav>
-      <Nav.Link href="#" onClick={props.onClick}>
-        Sign In
-      </Nav.Link>
     </Nav>
   );
 }

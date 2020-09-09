@@ -22,9 +22,11 @@ handler.
 // +--------------------+--------------------------------------------
 // | Required Libraries |
 // +--------------------+
-
+require("dotenv").config();
 var database = require("./database.js");
 const passport = require("passport");
+const nodemailer = require("nodemailer");
+const crypto = require("crypto");
 
 // +--------------------+--------------------------------------------
 // | Exported Functions |
@@ -128,25 +130,60 @@ handlers.getHomeImages = function (info, req, res) {
   });
 };
 
+/**
+ * We expect info to have both an
+ * imageId : String
+ * albumId : String
+ */
+handlers.addToAlbum = async function (info, req, res) {
+  if (!req.isAuthenticated()) {
+    res.json({
+      success: false,
+      message: "You need to be logged in to save an image to an album",
+    });
+  } else {
+    try {
+      const { albumId, imageId } = info;
+      const success = await database.addToAlbum(albumId, imageId);
+      if (success) {
+        res.json({
+          success: true,
+          message: "Successfully added image to album",
+        });
+      } else {
+        res.json({
+          success: false,
+          message:
+            "Failed to add due to unknown reason, most likely because image already exists in album",
+        });
+      }
+    } catch (error) {
+      res.json({
+        success: false,
+        message: error,
+      });
+    }
+  }
+};
+
 // +--------------------+----------------------------------------------
 // | Workspace Handlers |
 // +--------------------+
 
 /**
- * Check if an image exists
+ * Check if an workspace exists
  *   info.action: wsexists
  *   info.title: The title of the image
  */
-handlers.wsexists = async function (info, req, res) {
+handlers.wsexists = async function (info, req, workspace) {
   if (!req.isAuthenticated()) {
     res.json("logged out");
-  }
-  else {
+  } else {
     try {
       const exists = await database.wsexists(req.user._id, info.name);
-      res.json({ exists: exists, success: true })
+      res.json({ exists: exists, success: true });
     } catch (error) {
-      res.json('Database query failed for unknown reason')
+      res.json("Database query failed for unknown reason");
     }
   } // else
 };
@@ -154,13 +191,12 @@ handlers.wsexists = async function (info, req, res) {
 /**
  * Get workspaces
  *  info.action: getws
- *  info. 
+ *  info.
  */
 handlers.getws = async function (info, req, res) {
   try {
     // check if user is authenticated
-    if (!req.isAuthenticated())
-      throw ('You have to be logged in!')
+    if (!req.isAuthenticated()) throw "You have to be logged in!";
 
     // retrieve the workspaces corresponding to a user
     const { workspaces } = await database.getws(req.user._id);
@@ -168,70 +204,60 @@ handlers.getws = async function (info, req, res) {
     res.json({
       success: true,
       workspaces: workspaces,
-    })
-
+    });
   } catch (error) {
     res.json({
       success: false,
       message: error,
-    })
+    });
   }
-}
+};
 
 /**
-* Save a workspace.
-*   action: savews
-*   name: the name of the workspace
-*   data: The information about the workspace
-*   replace: true or false [optional]
-* Precondition:
-* The user does not already own a workspace by the same name.
-*/
+ * Save a workspace.
+ *   action: savews
+ *   name: the name of the workspace
+ *   data: The information about the workspace
+ *   replace: true or false [optional]
+ * Precondition:
+ * The user does not already own a workspace by the same name.
+ */
 handlers.savews = async function (info, req, res) {
   if (!req.isAuthenticated()) {
     fail(res, "Could not save workspace because you're not logged in");
-  }
-  else if (!info.workspace.name) {
+  } else if (!info.workspace.name) {
     fail(res, "Could not save workspace because you didn't title it");
-  }
-  else {
+  } else {
     try {
-      const workspace = info.workspace
+      const workspace = info.workspace;
       const bulkWriteOpResult = await database.savews(req.user._id, workspace);
       if (bulkWriteOpResult.nMatched === 0) {
-        throw ('Error Unknown')
-      }
-      else
-        res.json({ success: true })
+        throw "Error Unknown";
+      } else res.json({ success: true });
     } catch (error) {
-      res.json({ success: false, message: error })
+      res.json({ success: false, message: error });
     }
-
   }
-} // handlers.savews
+}; // handlers.savews
 
 handlers.deletews = async function (info, req, res) {
   if (!req.isAuthenticated()) {
     fail(res, "Could not save workspace because you're not logged in");
-  }
-  else if (!info.name) {
+  } else if (!info.name) {
     fail(res, "Could not save workspace because you didn't title it");
-  }
-  else {
+  } else {
     try {
       const result = await database.deletews(req.user._id, info.name);
       console.log(result);
-      if(result.nModified)
-        res.json({ success: true })
-      else{
-        res.json({success: false, message: 'Failed due to unknown error'})
+      if (result.nModified) res.json({ success: true });
+      else {
+        res.json({ success: false, message: "Failed due to unknown error" });
       }
     } catch (error) {
-      res.json({ success: false, message: error })
+      res.json({ success: false, message: error });
     }
   }
-}
-
+};
 
 // +----------------+--------------------------------------------------
 // | Gallery        |
@@ -352,12 +378,60 @@ handlers.getChallenges = function (info, req, res) {
 // | Authentication   |
 // +------------------+
 
+/**
+ * Verifies that the email address is correct
+ * @param {*} info
+ * @param {*} req
+ * @param {*} res
+ */
+handlers.verifyEmail = function (info, req, res) {
+  database.User.findOneAndUpdate(
+    { token: req.body.token },
+    { $set: { verified: true } },
+    { new: true },
+    (err, doc) => {
+      if (err) {
+        console.log(err);
+      } else {
+        console.log("Success");
+      }
+    }
+  );
+};
+
 /*
  *   Register user to the database
  *   info.action: signup
  */
 
-handlers.signUp = function (info, req, res) {
+handlers.signUp = async function (info, req, res) {
+  req.body.token = await crypto.randomBytes(32).toString('hex');
+
+  let transporter = nodemailer.createTransport({
+    service: "Gmail",
+    auth: {
+      user: process.env.GMAILID, // generated ethereal user
+      pass: process.env.GMAILPASS, // generated ethereal password
+    },
+  });
+
+  let mail = {
+    from: process.env.GMAILID,
+    to: req.body.email,
+    subject: "Email Verification",
+    text:
+      "Greetings from MIST!"+ '\n\n' +"Please use the following link to verify your account:" + '\n\n' + "http://localhost:3000/emailVerification/" +
+      req.body.token,
+  };
+
+  transporter.sendMail(mail, (err, data) => {
+    if (err) {
+      console.log(err);
+    } else {
+      console.log("Sent!");
+    }
+  });
+
   database.createUser(req, (message) => res.json(message));
 };
 
@@ -366,22 +440,39 @@ handlers.signUp = function (info, req, res) {
  *   info.action: signIn
  */
 
-handlers.signIn = function (info, req, res, next) {
-  passport.authenticate("local", (err, user, info) => {
+handlers.signIn = async function (info, req, res, next) {
+  let emailVerify = false;
+  await database.User.findOne({ username: req.body.username }, (err, user) => {
     if (err) {
-      throw err;
-    }
-    if (!user) {
-      var message = "No User Exists";
-      res.json(message);
+      console.log(err);
+    } else if (user) {
+      emailVerify = user.verified;
     } else {
-      req.logIn(user, (err) => {
-        if (err) throw err;
-        var message = "Success";
-        res.json(message);
-      });
+      res.json("No User Exists");
     }
-  })(req, res, next);
+  });
+  if (!emailVerify) {
+    res.json("Please Verify Email");
+  } else {
+    try {
+      passport.authenticate("local", (err, user, info) => {
+        if (err) {
+          throw err;
+        }
+        if (!user) {
+          res.json("No User Exists");
+        } else {
+          req.logIn(user, (err) => {
+            if (err) throw err;
+            var message = "Success";
+            res.json(message);
+          });
+        }
+      })(req, res, next);
+    } catch (error) {
+      console.log(error);
+    }
+  }
 };
 
 /*
@@ -406,6 +497,34 @@ handlers.getUser = function (info, req, res) {
       if (err) fail(res, "no user found");
       else res.json(user);
     });
+  }
+};
+
+/** */
+handlers.getAuthenticatedCompleteUserProfile = async function (info, req, res) {
+  try {
+    if (!req.isAuthenticated()) throw "You needs to login to view your profile!";
+    const userid = req.user._id;
+    const complete_user = await database.getCompleteUserProfile(userid);
+    res.json({
+      user: complete_user,
+    });
+  } catch (error) {
+    fail(res, error);
+  }
+};
+
+/** */
+handlers.getCompleteUserProfile = async function (info, req, res) {
+  try {
+    const { userid } = info;
+    const complete_user = await database.getCompleteUserProfile(userid);
+    console.log(complete_user);
+    res.json({
+      user: complete_user,
+    });
+  } catch (error) {
+    fail(res, error);
   }
 };
 
@@ -452,6 +571,223 @@ handlers.getUserExpertWS = function (info, req, res) {
   }
 };
 
+// +--------+------------------------------------------------------
+// | Albums |
+// +--------+
+
+/**
+ * Creates an album for a user. We expect info to be of the form:
+ * {
+ *  name: String
+ * }
+ */
+handlers.createAlbum = async function (info, req, res) {
+  if (!req.isAuthenticated())
+    res.json({ success: false, message: "You need to be logged in" });
+  else {
+    try {
+      const userId = req.user._id;
+      const { name } = info;
+      const success = await database.createAlbum(userId, name);
+      if (success) {
+        res.json({
+          success: true,
+          message: "Successfully saved the album " + name,
+        });
+      } else {
+        throw "Failed to save due to unknown reason";
+      }
+    } catch (error) {
+      res.json({
+        success: false,
+        message: error,
+      });
+    }
+  }
+};
+
+/**
+ * deletes an album. We expect info to be of the form:
+ * {
+ *  albumId : String
+ * }
+ *
+ * DANGEROUS : DOES NOT CHECK FOR AUTHORIZATION
+ */
+handlers.deleteAlbum = async function (info, req, res) {
+  if (!req.isAuthenticated()) {
+    res.json({
+      message: "Failed because you have not been authenticated",
+      success: false,
+    });
+  } else {
+    try {
+      const { albumId } = info;
+      const success = await database.deleteAlbum(albumId);
+      const response = success
+        ? {
+            message: "Succesfully deleted album ",
+            success: true,
+          }
+        : {
+            message: "Failed to delete album for unknow reason",
+            success: false,
+          };
+      res.json(response);
+    } catch (error) {
+      res.json({
+        success: false,
+        message: error,
+      });
+    }
+  }
+};
+
+/**
+ * We expect info to have
+ * {
+ *  albumId : String,
+ *  newName : String,
+ * }
+ */
+handlers.renameAlbum = async function (info, req, res) {
+  if (false && !req.isAuthenticated()) {
+    res.json({
+      success: false,
+      message: "You need to be logged in to rename an album",
+    });
+  }
+  try {
+    const { albumId, newName } = info;
+    const success = await database.renameAlbum(albumId, newName);
+    if (success) {
+      res.json({
+        success: true,
+        message: "Successfully renamed album",
+      });
+    } else {
+      res.json({
+        success: false,
+        message: "Failed to rename album due to unknown reason",
+      });
+    }
+  } catch (error) {
+    res.json({
+      success: false,
+      message: error,
+    });
+  }
+};
+
+// +----------+----------------------------------------------------------
+// | Reporting/Hiding/Blocking |
+// +---------------------------+
+
+/**
+ * Info contains the type of content that the user wants to hide as way as the
+ * ObjectId of the content in the database.
+ * info = {
+ *  type: STRING,
+ *  contentid: STRING,
+ * }
+ */
+handlers.hideContent = async function (info, req, res) {
+  if (!req.isAuthenticated())
+    fail(res, "You need to be logged in to hide content!");
+  else {
+    try {
+      const userid = req.user._id;
+      const { type, contentid } = info;
+      const success = await database.hideContent(userid, type, contentid);
+      res.json({
+        success: success,
+        message: success
+          ? "Successfully hidden content!"
+          : "Failed to hide content due to unknown reason",
+      });
+    } catch (error) {
+      res.json({
+        success: false,
+        message: error,
+      });
+    }
+  }
+};
+
+/**
+ * Info contains the type of content that the user wants to unhide as way as the
+ * ObjectId of the content in the database.
+ * info = {
+ *  type: STRING,
+ *  contentid: STRING,
+ * }
+ */
+handlers.unhideContent = async function (info, req, res) {
+  if (!req.isAuthenticated())
+    fail(res, "You need to be logged in to hide content!");
+  else {
+    try {
+      const userid = req.user._id;
+      const { type, contentid } = info;
+      const success = await database.unhideContent(userid, type, contentid);
+      res.json({
+        success: success,
+        message: success
+          ? "Successfully hidden content!"
+          : "Failed to hide content due to unknown reason",
+      });
+    } catch (error) {
+      res.json({
+        success: false,
+        message: error,
+      });
+    }
+  }
+};
+
+handlers.blockUser = async function (info, req, res) {
+  try {
+    if (!req.isAuthenticated())
+      throw "You have to be logged in to block a user";
+    const userid = req.user._id;
+    const { contentid } = info;
+    const success = await database.blockUser(userid, contentid);
+    console.log(success);
+  } catch (error) {
+    // not sure if it is relevant to distinguish between
+    // server-side or client-side errors
+    res.json({
+      success: false,
+      message: error,
+    });
+  }
+};
+
+handlers.unblockUser = async function (info, req, res) {
+  if (!req.isAuthenticated())
+    res.json({
+      success: false,
+      message: "You have to be logged in to unblock a user",
+    });
+  else {
+    try {
+      const { userid, contentid } = info;
+      const success = await database.unblockUser(userid, contentid);
+      res.json({
+        success: success,
+        message: success
+          ? "Successfully unblocked a user"
+          : "Failed to unblock user due to unknown error",
+      });
+    } catch (error) {
+      res.json({
+        success: false,
+        message: error,
+      });
+    }
+  }
+};
+
 // +-----------+------------------------------------------------------
 // | Settings  |
 // +-----------+
@@ -460,10 +796,75 @@ handlers.changeEmail = function (info, req, res) {
   database.changeEmail(req, (message) => res.json(message));
 };
 
-handlers.changeUsername = function(info, req, res) {
+handlers.changeUsername = function (info, req, res) {
   database.changeUsername(req, (message) => res.json(message));
-}
+};
 
-handlers.changePassword = function(info, req, res) {
+handlers.changePassword = function (info, req, res) {
   database.changePassword(req, (message) => res.json(message));
-}
+};
+
+handlers.deleteAccount = function (info, req, res) {
+  database.deleteAccount(req, (message) => {
+    req.logout();
+    res.json(message);
+  });
+};
+
+// +--------+------------------------------------------------------
+// | Misc.  |
+// +--------+
+
+/**
+ * Determines whether or not a user is authorized to Delete an object (album, image, etc...)
+ */
+handlers.deleteAuthorizationCheck = async function (info, req, res) {
+  try {
+    const { userId, model, objectId } = info;
+    const updateAuthorization = database.updateAuthorizationCheck(
+      userId,
+      model,
+      objectId
+    );
+    const adminOrModerator = database.isAdminOrModerator(userId);
+    Promise.all([updateAuthorization, adminOrModerator]).then((values) => {
+      res.json({
+        success: true,
+        authorized: values[0] || values[1],
+      });
+    });
+  } catch (error) {
+    res.json({
+      success: false,
+      authorized: false,
+    });
+  }
+};
+
+/**
+ * Determines whether or not a user is authorized to Update an object (album, image, etc...)
+ */
+handlers.updateAuthorizationCheck = async function (info, req, res) {
+  if (!req.isAuthenticated()) {
+    res.json({
+      success: false,
+      message: "You need to be logged in!",
+    });
+  } else {
+    try {
+      const { userId, model, objectId } = info;
+      const authorized = Boolean(
+        await database.updateAuthorizationCheck(userId, model, objectId)
+      );
+      res.json({
+        success: true,
+        authorized: authorized,
+      });
+    } catch (error) {
+      res.json({
+        success: false,
+        message: error,
+      });
+    }
+  }
+};
