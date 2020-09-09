@@ -16,7 +16,7 @@ const cookieParser = require('cookie-parser');
 
 // Serve the static files from the React build
 
-app.use(express.static(path.join(__dirname, 'build')));
+app.use(express.static(path.join(__dirname, '../frontend/build')));
 
 
 app.get('/', (req, res) => {
@@ -36,12 +36,12 @@ app.use(flash());
 
 app.use(
   session({
-    secret: process.env.SECRET,
+    secret: process.env.SECRET || 'SECRET',
     resave: false,
     saveUninitialized: false
   })
 );
-app.use(cookieParser(process.env.SECRET));
+app.use(cookieParser(process.env.SECRET || 'SECRET'));
 
 
 //=================== Setup Passport =======================
