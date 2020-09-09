@@ -1,0 +1,19 @@
+{
+  "name": "mist",
+  "version": "1.0.0",
+  "description": " The Mathematical Image Synthesis Toolkit ",
+  "scripts": {
+	"start": "npm start --prefix \"backend\"",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lindavin/MIST.git"
+  },
+  "author": "A set of several individuals",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/lindavin/MIST/issues"
+  },
+  "homepage": "https://github.com/lindavin/MIST#readme"
+}
