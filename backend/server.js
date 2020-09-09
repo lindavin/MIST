@@ -14,15 +14,12 @@ const app = express();
 const cors = require("cors");
 const cookieParser = require('cookie-parser');
 
-/*
-// Serve the static files from the React app
-app.use(express.static(path.join(__dirname, '/../design-app')));
-*/
+// Serve the static files from the React build
 
 app.use(express.static(path.join(__dirname, 'build')));
 
 
-app.get('/*', (req, res) => {
+app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, 'build', 'index.html'));
 });
 //================== Set View Engine =======================

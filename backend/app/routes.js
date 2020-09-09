@@ -2,11 +2,12 @@ const api = require('./api');
 
 module.exports = (app) => {
 
+    console.log('correct sanity check')
     // Path: /api	
     //  Dynamic content distribution - return raw data through Fetch	
     
-    app.post('/api', function (req, res) { api.run(req.body, req, res); });
-    app.get('/api', function (req, res) { api.run(req.query, req, res); });
+    app.post('/api', function (req, res) { console.log('receving post request to: '); console.log(req.body);  api.run(req.body, req, res); });
+    app.get('/api', function (req, res) { console.log(req.query); api.run(req.query, req, res); });
     //------------------------------------------------	                
 
     // provides user information needed for profile page	
