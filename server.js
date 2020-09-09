@@ -36,12 +36,12 @@ app.use(flash());
 
 app.use(
   session({
-    secret: process.env.SECRET,
+    secret: 'SECRET',
     resave: false,
     saveUninitialized: false
   })
 );
-app.use(cookieParser(process.env.SECRET));
+app.use(cookieParser('SECRET'));
 
 
 //=================== Setup Passport =======================
